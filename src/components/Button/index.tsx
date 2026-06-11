@@ -20,7 +20,7 @@ export const Button = styled.button<ButtonProps>`
     ${(props) => {
         const colors = props.theme?.colors || {
             white: '#FFFFFF',
-            primary: '#018762',
+            primary: '#FF4D8D',
         };
         switch (props.$variant) {
             case 'secondary':
@@ -52,7 +52,7 @@ export const Button = styled.button<ButtonProps>`
 
     &:focus {
         outline: 3px solid
-            ${(props) => props.theme?.colors?.primary || '#018762'};
+            ${(props) => props.theme?.colors?.primary || '#FF4D8D'};
         outline-offset: 2px;
     }
 `;

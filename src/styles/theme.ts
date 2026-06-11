@@ -1,10 +1,10 @@
 export const theme = {
   colors: {
-    primary: '#FF4D8D',      // Rosa vibrante
-    secondary: '#7B2CBF',    // Roxo forte
+    primary: '#FF4D8D',      
+    secondary: '#7B2CBF',   
     text: '#1A1A1A',
     white: '#FFFFFF',
-    background: '#FFF7FB',   // Fundo com leve tom rosado
+    background: '#FFF7FB',  
     error: '#DC2626',
   },
 

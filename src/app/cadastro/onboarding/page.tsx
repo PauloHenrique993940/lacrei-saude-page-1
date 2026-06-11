@@ -23,7 +23,7 @@ const Content = styled.section`
     margin: 0 auto;
     padding: 4rem 2rem;
     gap: 4rem;
-    
+
     @media (max-width: 768px) {
         grid-template-columns: 1fr;
         padding: 2rem 1.5rem;
@@ -84,6 +84,7 @@ export default function Onboarding() {
                         src={MedicoCuidandoPaciente}
                         alt="Ilustração Lacrei Saúde"
                         fill
+                        unoptimized
                         style={{ objectFit: 'contain' }}
                         priority
                     />

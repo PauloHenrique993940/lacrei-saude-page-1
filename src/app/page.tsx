@@ -25,8 +25,7 @@ const Content = styled.section`
     width: 100%;
     min-height: 600px;
 
-    @media (max-width: ${(props) =>
-            props.theme.breakpoints.tablet}) {
+    @media (max-width: ${(props) => props.theme.breakpoints.tablet}) {
         padding: 2rem 1.5rem;
         flex-direction: column;
         justify-content: center;
@@ -120,6 +119,7 @@ export default function Home() {
                         src={ImageHome}
                         alt="Background Lacrei"
                         fill
+                        unoptimized
                         style={{ objectFit: 'cover' }}
                         priority
                     />

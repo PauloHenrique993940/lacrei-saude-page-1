@@ -51,16 +51,17 @@ const StyledLink = styled(Link)`
 const HelpButton = styled(Link)`
     font-weight: 700;
     font-size: 1rem;
-    color: #018762;
+    color: ${(props) => props.theme?.colors?.primary || '#FF4D8D'};
     text-decoration: none;
     padding: 0.5rem 1.5rem;
-    border: 2px solid #018762;
+    border: 2px solid ${(props) => props.theme?.colors?.primary || '#FF4D8D'};
     border-radius: 8px;
     transition: all 0.2s;
     background-color: transparent;
 
     &:hover {
-        background-color: #018762;
+        background-color: ${(props) =>
+            props.theme?.colors?.primary || '#FF4D8D'};
         color: white;
     }
 `;

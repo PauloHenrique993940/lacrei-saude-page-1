@@ -6,6 +6,11 @@ import { Footer } from '@/components/Footer';
 import { Button } from '@/components/Button';
 import Image from 'next/image';
 import Link from 'next/link';
+import FundoLacrei from '@/app/assets/fundolacrei.png';
+import PacienteImage from '@/app/assets/paciente.png';
+import ProfissionalImage from '@/app/assets/profissiona.png';
+import ImageProfissional from '@/app/assets/ImageProfissional.png';
+import ImagePaciente from '@/app/assets/iagePaciente.png';
 
 const Main = styled.main`
     display: flex;
@@ -70,6 +75,24 @@ const CTA = styled.div`
     text-align: center;
 `;
 
+const GallerySection = styled.section`
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+
+    @media (max-width: ${(props) => props.theme.breakpoints.tablet}) {
+        grid-template-columns: 1fr;
+    }
+`;
+
+const GalleryItem = styled.div`
+    position: relative;
+    width: 100%;
+    height: 260px;
+    border-radius: 16px;
+    overflow: hidden;
+`;
+
 /** Screen: 3I / Quem somos */
 export default function QuemSomos() {
     return (
@@ -97,9 +120,10 @@ export default function QuemSomos() {
                     </TextBlock>
                     <ImageWrapper>
                         <Image
-                            src="https://images.unsplash.com/photo-1551076805-e1869033e561?auto=format&fit=crop&q=80&w=800"
-                            alt="Pessoa sorrindo e apontando para o rosto"
+                            src={FundoLacrei}
+                            alt="Pessoas em ambiente acolhedor da Lacrei Saúde"
                             fill
+                            unoptimized
                             style={{ objectFit: 'cover' }}
                             sizes="(max-width: 768px) 100vw, 50vw"
                         />
@@ -113,6 +137,49 @@ export default function QuemSomos() {
                         acolhimento.
                     </p>
                 </CTA>
+
+                <GallerySection>
+                    <GalleryItem>
+                        <Image
+                            src={PacienteImage}
+                            alt="Paciente em atendimento de saúde"
+                            fill
+                            unoptimized
+                            style={{ objectFit: 'cover' }}
+                            sizes="(max-width: 768px) 100vw, 50vw"
+                        />
+                    </GalleryItem>
+                    <GalleryItem>
+                        <Image
+                            src={ProfissionalImage}
+                            alt="Profissional de saúde da comunidade Lacrei"
+                            fill
+                            unoptimized
+                            style={{ objectFit: 'cover' }}
+                            sizes="(max-width: 768px) 100vw, 50vw"
+                        />
+                    </GalleryItem>
+                    <GalleryItem>
+                        <Image
+                            src={ImageProfissional}
+                            alt="Equipe profissional de atendimento inclusivo"
+                            fill
+                            unoptimized
+                            style={{ objectFit: 'cover' }}
+                            sizes="(max-width: 768px) 100vw, 50vw"
+                        />
+                    </GalleryItem>
+                    <GalleryItem>
+                        <Image
+                            src={ImagePaciente}
+                            alt="Paciente recebendo cuidado com acolhimento"
+                            fill
+                            unoptimized
+                            style={{ objectFit: 'cover' }}
+                            sizes="(max-width: 768px) 100vw, 50vw"
+                        />
+                    </GalleryItem>
+                </GallerySection>
             </Content>
             <Footer />
         </Main>
