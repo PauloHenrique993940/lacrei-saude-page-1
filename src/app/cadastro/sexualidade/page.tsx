@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
@@ -8,6 +8,7 @@ import { Button } from '@/components/Button';
 import { Stepper } from '@/components/Stepper';
 import { RadioGroup } from '@/components/RadioGroup';
 import Link from 'next/link';
+import { useOnboarding } from '@/providers/OnboardingContext';
 
 const Main = styled.main`
     display: flex;
@@ -27,12 +28,12 @@ const Question = styled.h2`
     font-size: 1.5rem;
     font-weight: 700;
     margin-bottom: 2rem;
-    color: ${(props) => props.theme?.colors?.secondary || '#2D2D2D'};
+    color: ${(props) => props.theme.colors.secondary};
 `;
 
 const Disclaimer = styled.p`
     font-size: 0.875rem;
-    color: ${(props) => props.theme?.colors?.text || '#515151'};
+    color: ${(props) => props.theme.colors.text};
     background-color: #f8f9fa;
     padding: 1rem;
     border-radius: 8px;
@@ -52,7 +53,7 @@ const NavigationGroup = styled.div`
     margin-top: 2rem;
 
     @media (max-width: ${(props) =>
-            props.theme?.breakpoints?.tablet || '768px'}) {
+            props.theme.breakpoints.tablet}) {
         flex-direction: column-reverse;
         gap: 1rem;
 
@@ -74,7 +75,7 @@ const SEXUALITY_OPTIONS = [
 ];
 
 export default function Sexualidade() {
-    const [sexuality, setSexuality] = useState('');
+    const { userData, updateData } = useOnboarding();
 
     return (
         <Main>
@@ -87,8 +88,8 @@ export default function Sexualidade() {
                 <RadioGroup
                     name="sexuality"
                     options={SEXUALITY_OPTIONS}
-                    selectedValue={sexuality}
-                    onChange={setSexuality}
+                    selectedValue={userData.sexuality || ''}
+                    onChange={(val) => updateData({ sexuality: val })}
                 />
 
                 <Disclaimer>
@@ -103,7 +104,7 @@ export default function Sexualidade() {
                         </Button>
                     </Link>
                     <Link href="/cadastro/deficiencia">
-                        <Button disabled={!sexuality}>Próximo</Button>
+                        <Button disabled={!userData.sexuality}>Próximo</Button>
                     </Link>
                 </NavigationGroup>
             </Content>

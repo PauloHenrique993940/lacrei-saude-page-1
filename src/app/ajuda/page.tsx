@@ -25,7 +25,7 @@ const Title = styled.h1`
     font-size: 2.5rem;
     font-weight: 700;
     margin-bottom: 2rem;
-    color: ${(props) => (props.theme as any)?.colors?.secondary || '#2D2D2D'};
+    color: ${(props) => props.theme.colors.secondary};
 `;
 
 const FaqSection = styled.div`
@@ -39,12 +39,12 @@ const Question = styled.div`
         font-size: 1.25rem;
         font-weight: 700;
         margin-bottom: 0.75rem;
-        color: ${(props) => props.theme?.colors?.primary || '#018762'};
+        color: ${(props) => props.theme.colors.primary};
     }
     p {
         font-size: 1rem;
         line-height: 1.6;
-        color: ${(props) => props.theme?.colors?.text || '#515151'};
+        color: ${(props) => props.theme.colors.text};
     }
 `;
 
@@ -57,7 +57,11 @@ const ContactInfo = styled.div`
 
     h2 {
         margin-bottom: 1rem;
-        color: ${(props) => props.theme?.colors?.secondary || '#2D2D2D'};
+        color: ${(props) => props.theme.colors.secondary};
+    }
+
+    .button-wrapper {
+        margin-top: 1.5rem;
     }
 `;
 
@@ -102,11 +106,11 @@ export default function Ajuda() {
                     <p>
                         Entre em contato pelo e-mail: contato@lacreisaude.com.br
                     </p>
-                    <Link href="/">
-                        <Button style={{ marginTop: '1.5rem' }}>
-                            Voltar para início
-                        </Button>
-                    </Link>
+                    <div className="button-wrapper">
+                        <Link href="/">
+                            <Button>Voltar para início</Button>
+                        </Link>
+                    </div>
                 </ContactInfo>
             </Content>
             <Footer />

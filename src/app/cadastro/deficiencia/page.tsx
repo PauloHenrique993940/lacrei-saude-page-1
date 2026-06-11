@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
@@ -8,6 +8,7 @@ import { Button } from '@/components/Button';
 import { Stepper } from '@/components/Stepper';
 import { RadioGroup } from '@/components/RadioGroup';
 import Link from 'next/link';
+import { useOnboarding } from '@/providers/OnboardingContext';
 
 const Main = styled.main`
     display: flex;
@@ -27,12 +28,12 @@ const Question = styled.h2`
     font-size: 1.5rem;
     font-weight: 700;
     margin-bottom: 2rem;
-    color: ${(props) => props.theme?.colors?.secondary || '#2D2D2D'};
+    color: ${(props) => props.theme.colors.secondary};
 `;
 
 const Disclaimer = styled.p`
     font-size: 0.875rem;
-    color: ${(props) => props.theme?.colors?.text || '#515151'};
+    color: ${(props) => props.theme.colors.text};
     background-color: #f8f9fa;
     padding: 1rem;
     border-radius: 8px;
@@ -52,7 +53,7 @@ const NavigationGroup = styled.div`
     margin-top: 2rem;
 
     @media (max-width: ${(props) =>
-            props.theme?.breakpoints?.tablet || '768px'}) {
+            props.theme.breakpoints.tablet}) {
         flex-direction: column-reverse;
         gap: 1rem;
 
@@ -70,7 +71,7 @@ const DISABILITY_OPTIONS = [
 ];
 
 export default function Deficiencia() {
-    const [disability, setDisability] = useState('');
+    const { userData, updateData } = useOnboarding();
 
     return (
         <Main>
@@ -83,8 +84,8 @@ export default function Deficiencia() {
                 <RadioGroup
                     name="disability"
                     options={DISABILITY_OPTIONS}
-                    selectedValue={disability}
-                    onChange={setDisability}
+                    selectedValue={userData.disability || ''}
+                    onChange={(val) => updateData({ disability: val })}
                 />
 
                 <Disclaimer>
@@ -99,7 +100,7 @@ export default function Deficiencia() {
                         </Button>
                     </Link>
                     <Link href="/cadastro/concluido">
-                        <Button disabled={!disability}>Próximo</Button>
+                        <Button disabled={!userData.disability}>Próximo</Button>
                     </Link>
                 </NavigationGroup>
             </Content>

@@ -6,9 +6,9 @@ import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { Button } from '@/components/Button';
 import Link from 'next/link';
-import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { saveUserOnboarding } from '@/services/api';
+import { useOnboarding } from '@/providers/OnboardingContext';
 
 const Main = styled.main`
     display: flex;
@@ -33,21 +33,21 @@ const Title = styled.h1`
     font-size: 2rem;
     font-weight: 700;
     margin-top: 2rem;
-    color: ${(props) => props.theme?.colors?.primary || '#018762'};
+    color: ${(props) => props.theme.colors.primary};
 `;
 
 const Text = styled.p`
     font-size: 1.125rem;
     margin-top: 1rem;
     margin-bottom: 2.5rem;
-    color: ${(props) => props.theme?.colors?.text || '#515151'};
+    color: ${(props) => props.theme.colors.text};
     line-height: 1.5;
 `;
 
 const SuccessIcon = styled.div`
     width: 120px;
     height: 120px;
-    background-color: ${(props) => props.theme?.colors?.primary || '#018762'};
+    background-color: ${(props) => props.theme.colors.primary};
     color: white;
     border-radius: 50%;
     display: flex;
@@ -64,14 +64,16 @@ const LoadingText = styled.p`
 `;
 
 export default function Concluido() {
+    const { userData, resetData } = useOnboarding();
     const [isSaving, setIsSaving] = useState(true);
 
     useEffect(() => {
-        // Simula o salvamento dos dados ao chegar na tela final
-        saveUserOnboarding({}).then(() => {
+        // Salva os dados reais acumulados no contexto
+        saveUserOnboarding(userData).then(() => {
             setIsSaving(false);
+            resetData();
         });
-    }, []);
+    }, [userData, resetData]);
 
     return (
         <Main>

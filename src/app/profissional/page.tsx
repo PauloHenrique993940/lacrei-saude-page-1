@@ -6,6 +6,7 @@ import { Footer } from '@/components/Footer';
 import { Button } from '@/components/Button';
 import Image from 'next/image';
 import Link from 'next/link';
+import profissionaisSaude from '@/app/assets/profissionaisSaude.avif';
 
 const Main = styled.main`
     display: flex;
@@ -107,7 +108,7 @@ export default function Profissional() {
                 </TextBlock>
                 <ImageContainer>
                     <Image
-                        src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&q=80&w=800"
+                        src={profissionaisSaude}
                         alt="Time de profissionais de saúde"
                         fill
                         style={{ objectFit: 'cover' }}
