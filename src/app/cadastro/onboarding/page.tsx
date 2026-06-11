@@ -36,7 +36,7 @@ const FormSection = styled.div`
         font-size: 2.5rem;
         line-height: 1.2;
         margin-bottom: 2rem;
-        color: ${(props) => props.theme?.colors?.secondary || '#2D2D2D'};
+        color: ${(props) => props.theme?.colors?.secondary || '#7B2CBF'};
     }
 
     p {

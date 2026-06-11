@@ -39,12 +39,12 @@ const Nav = styled.nav`
 const StyledLink = styled(Link)`
     font-weight: 700;
     font-size: 1rem;
-    color: ${(props) => props.theme?.colors?.secondary || '#2D2D2D'};
+    color: ${(props) => props.theme?.colors?.secondary || '#7B2CBF'};
     text-decoration: none;
     transition: all 0.2s;
 
     &:hover {
-        color: ${(props) => props.theme?.colors?.primary || '#018762'};
+        color: ${(props) => props.theme?.colors?.primary || '#FF4D8D'};
     }
 `;
 
@@ -67,13 +67,13 @@ const HelpButton = styled(Link)`
 `;
 
 const ActiveLink = styled(StyledLink)`
-    color: ${(props) => props.theme?.colors?.primary || '#018762'};
+    color: ${(props) => props.theme?.colors?.primary || '#FF4D8D'};
 `;
 
 const Logo = styled(Link)`
     font-size: 1.5rem;
     font-weight: 700;
-    color: ${(props) => props.theme?.colors?.primary || '#018762'};
+    color: ${(props) => props.theme?.colors?.primary || '#FF4D8D'};
     text-decoration: none;
 `;
 
@@ -84,7 +84,7 @@ const HeaderActions = styled.div`
 `;
 
 const LoginButton = styled(Link)`
-    background-color: ${(props) => props.theme?.colors?.primary || '#018762'};
+    background-color: ${(props) => props.theme?.colors?.primary || '#FF4D8D'};
     color: ${(props) => props.theme?.colors?.white || '#FFFFFF'};
     padding: 0.625rem 2rem;
     border-radius: 8px;

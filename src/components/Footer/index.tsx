@@ -31,7 +31,7 @@ const LogoSection = styled.div`
 const LogoText = styled(Link)`
     font-size: 2rem;
     font-weight: 700;
-    color: ${(props) => props.theme?.colors?.primary || '#018762'};
+    color: ${(props) => props.theme?.colors?.primary || '#FF4D8D'};
     text-decoration: none;
 `;
 
@@ -56,7 +56,7 @@ const NavLinks = styled.nav`
 `;
 
 const FooterLink = styled(Link)`
-    color: ${(props) => props.theme?.colors?.secondary || '#2D2D2D'};
+    color: ${(props) => props.theme?.colors?.secondary || '#7B2CBF'};
     font-size: 1rem;
     font-weight: 400;
     text-decoration: none;
@@ -87,7 +87,7 @@ const SocialIcons = styled.div`
     svg {
         width: 32px;
         height: 32px;
-        fill: ${(props) => props.theme?.colors?.primary || '#018762'};
+        fill: ${(props) => props.theme?.colors?.primary || '#FF4D8D'};
     }
 `;
 

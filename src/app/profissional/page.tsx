@@ -39,7 +39,7 @@ const TextBlock = styled.div`
         font-weight: 700;
         line-height: 1.2;
         margin-bottom: 2rem;
-        color: ${(props) => props.theme?.colors?.secondary || '#2D2D2D'};
+        color: ${(props) => props.theme?.colors?.secondary || '#7B2CBF'};
     }
 
     p {

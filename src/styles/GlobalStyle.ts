@@ -11,7 +11,7 @@ export const GlobalStyle = createGlobalStyle`
 
   body {
     font-family: 'Nunito', sans-serif;
-    color: ${(props) => props.theme?.colors?.secondary || '#2D2D2D'};
+    color: ${(props) => props.theme?.colors?.secondary || '#7B2CBF'};
     background-color: ${(props) => props.theme?.colors?.background || '#FFFFFF'};
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
