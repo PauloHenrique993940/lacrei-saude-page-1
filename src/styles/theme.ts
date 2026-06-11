@@ -1,15 +1,17 @@
 export const theme = {
   colors: {
-    primary: '#018762',      // Verde Lacrei
-    secondary: '#2D2D2D',    // Cinza escuro (texto principal)
-    text: '#515151',         // Cinza médio (texto secundário)
+    primary: '#FF4D8D',      // Rosa vibrante
+    secondary: '#7B2CBF',    // Roxo forte
+    text: '#1A1A1A',
     white: '#FFFFFF',
-    background: '#FFFFFF',
-    error: '#B00020',
+    background: '#FFF7FB',   // Fundo com leve tom rosado
+    error: '#DC2626',
   },
+
   fonts: {
     main: 'Nunito, sans-serif',
   },
+
   breakpoints: {
     mobile: '480px',
     tablet: '768px',
