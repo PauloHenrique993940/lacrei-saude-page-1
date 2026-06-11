@@ -2,11 +2,11 @@
 
 Este projeto foi desenvolvido como parte do desafio técnico para voluntariado na **Lacrei Saúde**. A aplicação é uma plataforma interativa focada em acessibilidade, responsividade e performance, utilizando as tecnologias mais modernas do ecossistema React.
 
-## � Links Úteis
+## Links Úteis
 - **Deploy na Vercel**: [https://lacrei-saude-desafio.vercel.app](https://lacrei-saude-desafio.vercel.app)
-- **Repositório GitHub**: [https://github.com/seu-usuario/lacrei-saude](https://github.com/seu-usuario/lacrei-saude)
+- **Repositório GitHub**: [https://github.com/PauloHenrique993940/lacrei-saude-page-1.git](https://github.com/PauloHenrique993940/lacrei-saude-page-1.git)
 
-## �🚀 Tecnologias Utilizadas
+## 🚀 Tecnologias Utilizadas
 
 - **Next.js 15+** (App Router)
 - **TypeScript** para tipagem estática
@@ -14,14 +14,14 @@ Este projeto foi desenvolvido como parte do desafio técnico para voluntariado n
 - **Jest** e **React Testing Library** para testes unitários
 - **Lighthouse** para auditoria de qualidade
 
-## �️ Como rodar o projeto localmente
+## 🛠️ Como rodar o projeto localmente
 
 Siga os passos abaixo para executar a aplicação em sua máquina:
 
 1. **Clone o repositório**:
    ```bash
-   git clone https://github.com/seu-usuario/lacrei-saude.git
-   cd lacrei-saude
+   git clone https://github.com/PauloHenrique993940/lacrei-saude-page-1.git
+   cd lacrei-saude-page-1
    ```
 
 2. **Instale as dependências**:
@@ -47,7 +47,7 @@ Siga os passos abaixo para executar a aplicação em sua máquina:
    npm run start
    ```
 
-## �📋 Requisitos Implementados
+## 📋 Requisitos Implementados
 
 - [x] **Header e Footer** personalizados seguindo a identidade visual (Marsha Design System).
 - [x] **Fluxo de Roteamento Completo**: Jornada de onboarding detalhada com 7 telas funcionais.
