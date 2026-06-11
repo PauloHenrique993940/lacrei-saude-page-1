@@ -25,7 +25,7 @@ const Title = styled.h1`
     font-size: 2.5rem;
     font-weight: 700;
     margin-bottom: 2rem;
-    color: ${(props) => props.theme?.colors?.secondary || '#2D2D2D'};
+    color: ${(props) => (props.theme as any)?.colors?.secondary || '#2D2D2D'};
 `;
 
 const FaqSection = styled.div`

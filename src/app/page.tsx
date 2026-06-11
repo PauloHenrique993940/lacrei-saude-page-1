@@ -6,7 +6,7 @@ import { Footer } from '@/components/Footer';
 import { Button } from '@/components/Button';
 import Image from 'next/image';
 import Link from 'next/link';
-import ImageHome from '../app/assets/lacrei2.png';
+import ImageHome from '@/app/assets/lacrei2.png';
 
 const Main = styled.main`
     display: flex;
@@ -26,7 +26,7 @@ const Content = styled.section`
     min-height: 600px;
 
     @media (max-width: ${(props) =>
-            props.theme.breakpoints.tablet || '768px'}) {
+            props.theme.breakpoints.tablet}) {
         padding: 2rem 1.5rem;
         flex-direction: column;
         justify-content: center;
@@ -43,13 +43,13 @@ const HeroText = styled.div`
         font-weight: 700;
         line-height: 1.2;
         margin-bottom: 2rem;
-        color: ${(props) => props.theme?.colors?.secondary || '#2D2D2D'};
+        color: ${(props) => props.theme.colors.secondary};
     }
 
     p {
         font-size: 1.5rem;
         margin-bottom: 3rem;
-        color: ${(props) => props.theme?.colors?.text || '#515151'};
+        color: ${(props) => props.theme.colors.text};
         line-height: 1.5;
     }
 
