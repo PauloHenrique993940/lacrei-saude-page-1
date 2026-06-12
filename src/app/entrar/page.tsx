@@ -139,12 +139,18 @@ export default function EntrarPage() {
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         setError('');
+
+        if (!email || !password) {
+            setError('Por favor, preencha todos os campos.');
+            return;
+        }
+
         setIsSubmitting(true);
 
         const success = await login(email, password);
 
         if (!success) {
-            setError('Informe e-mail e senha para continuar.');
+            setError('E-mail ou senha incorretos. Verifique seus dados e tente novamente.');
             setIsSubmitting(false);
             return;
         }
@@ -209,8 +215,8 @@ export default function EntrarPage() {
                         alt="Profissionais de saúde em atendimento"
                         fill
                         style={{ objectFit: 'cover' }}
-                        unoptimized
                         priority
+                        sizes="(max-width: 1024px) 0vw, 50vw"
                     />
                 </SideCard>
             </Content>

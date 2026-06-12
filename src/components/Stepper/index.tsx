@@ -22,11 +22,12 @@ const StepWrapper = styled.div`
     &::before {
         content: '';
         position: absolute;
-        top: 20px;
+        bottom: 12px;
         left: 0;
         right: 0;
         height: 2px;
-        background-color: #eeeeee;
+        background-color: ${(props) =>
+            props.theme?.colors?.border || '#D5DBE3'};
         z-index: 1;
     }
 `;
@@ -40,40 +41,49 @@ const StepItem = styled.div<{ $active: boolean; $completed: boolean }>`
     flex: 1;
 
     span {
-        margin-top: 0.5rem;
-        font-size: 0.75rem;
+        margin-bottom: 1rem;
+        font-size: 0.875rem;
         color: ${(props) =>
-            props.$active ? props.theme.colors.primary : '#888888'};
+            props.$active
+                ? props.theme?.colors?.primary
+                : props.theme?.colors?.text?.helper || '#717D96'};
         font-weight: ${(props) => (props.$active ? '700' : '400')};
+        text-align: center;
     }
 `;
 
 const Circle = styled.div<{ $active: boolean; $completed: boolean }>`
-    width: 40px;
-    height: 40px;
+    width: 24px;
+    height: 24px;
     border-radius: 50%;
     background-color: ${(props) =>
         props.$active || props.$completed
-            ? props.theme.colors.primary
-            : '#FFFFFF'};
+            ? props.theme?.colors?.primary
+            : props.theme?.colors?.white || '#FFFFFF'};
     border: 2px solid
         ${(props) =>
             props.$active || props.$completed
-                ? props.theme.colors.primary
-                : '#eeeeee'};
+                ? props.theme?.colors?.primary
+                : props.theme?.colors?.border || '#D5DBE3'};
     display: flex;
     align-items: center;
     justify-content: center;
-    color: ${(props) =>
-        props.$active || props.$completed ? '#FFFFFF' : '#888888'};
-    font-weight: 700;
-    font-size: 0.875rem;
-    transition: all 0.2s;
+    transition: all 0.3s ease;
+    cursor: default;
+
+    &::after {
+        content: '';
+        display: ${(props) => (props.$active ? 'block' : 'none')};
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background-color: ${(props) => props.theme?.colors?.white};
+    }
 `;
 
 export const Stepper = ({ currentStep, steps }: StepperProps) => {
     return (
-        <Container>
+        <Container aria-label="Progresso do cadastro">
             <StepWrapper>
                 {steps.map((step, index) => {
                     const stepNumber = index + 1;
@@ -85,11 +95,13 @@ export const Stepper = ({ currentStep, steps }: StepperProps) => {
                             key={step}
                             $active={isActive}
                             $completed={isCompleted}
+                            aria-current={isActive ? 'step' : undefined}
                         >
-                            <Circle $active={isActive} $completed={isCompleted}>
-                                {stepNumber}
-                            </Circle>
                             <span>{step}</span>
+                            <Circle
+                                $active={isActive}
+                                $completed={isCompleted}
+                            />
                         </StepItem>
                     );
                 })}

@@ -33,17 +33,18 @@ const Content = styled.section`
 
 const FormSection = styled.div`
     h1 {
-        font-size: 2.5rem;
-        line-height: 1.2;
-        margin-bottom: 2rem;
-        color: ${(props) => props.theme?.colors?.secondary || '#7B2CBF'};
+        font-size: 3rem;
+        font-weight: 800;
+        line-height: 1.1;
+        margin-bottom: ${(props) => props.theme?.spacing?.xl || '2rem'};
+        color: ${(props) => props.theme?.colors?.text?.title || '#1F2937'};
     }
 
     p {
-        font-size: 1.25rem;
-        line-height: 1.6;
-        margin-bottom: 3rem;
-        color: ${(props) => props.theme?.colors?.text || '#515151'};
+        font-size: 1.5rem;
+        line-height: 1.5;
+        margin-bottom: ${(props) => props.theme?.spacing?.['2xl'] || '3rem'};
+        color: ${(props) => props.theme?.colors?.text?.default || '#485467'};
     }
 `;
 
@@ -84,9 +85,9 @@ export default function Onboarding() {
                         src={MedicoCuidandoPaciente}
                         alt="Ilustração Lacrei Saúde"
                         fill
-                        unoptimized
                         style={{ objectFit: 'contain' }}
                         priority
+                        sizes="(max-width: 768px) 100vw, 50vw"
                     />
                 </IllustrationWrapper>
             </Content>

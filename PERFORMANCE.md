@@ -1,5 +1,20 @@
 # Guia de Otimização de Desempenho - Lacrei Saúde
 
+## 📊 Resultados e Evidências (Lighthouse)
+
+Abaixo estão os resultados obtidos em ambiente de produção, demonstrando a eficácia das otimizações:
+
+| Métrica                        | Pontuação | Tempo / Valor |
+| :----------------------------- | :-------- | :------------ |
+| **Performance Total**          | **88**    | Target: >85%  |
+| First Contentful Paint (FCP)   | -         | 0.6s          |
+| Largest Contentful Paint (LCP) | -         | 1.0s          |
+| Total Blocking Time (TBT)      | -         | 40ms          |
+| Cumulative Layout Shift (CLS)  | -         | 0.01          |
+| Speed Index                    | -         | 0.9s          |
+
+---
+
 ## 🚀 Melhorias de Desempenho Implementadas
 
 Este documento detalha todas as otimizações de performance implementadas no projeto Lacrei Saúde.
@@ -32,7 +47,8 @@ images: {
 }
 ```
 
-**Impacto**: 
+**Impacto**:
+
 - Formatos AVIF reduzem tamanho em até 50% comparado a PNG/JPG
 - WebP como fallback reduz em até 30%
 - Cache de longa duração economiza requisições
@@ -128,6 +144,7 @@ const HeavyComponent = dynamic(() => import('@/components/Heavy'), {
 ### Code Splitting de Rotas
 
 Next.js App Router automaticamente faz code splitting por rota:
+
 - `/` carrega seu próprio chunk
 - `/cadastro/onboarding` carrega seu próprio chunk
 - etc.
@@ -142,7 +159,7 @@ Next.js App Router automaticamente faz code splitting por rota:
 
 ```typescript
 // AVIF (melhor compressão, ~50% menor que JPG)
-<Image 
+<Image
   src="/image.jpg"
   alt="Description"
   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
@@ -154,12 +171,13 @@ Next.js automaticamente gera formatos AVIF, WebP e JPG.
 ### Srcset Responsivo
 
 ```typescript
-sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+sizes = "(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw";
 ```
 
 Carrega imagem apropriada para cada device:
+
 - Mobile: 100vw
-- Tablet: 50vw  
+- Tablet: 50vw
 - Desktop: 33vw
 
 **Impacto**: Economiza 40-60% de bandwidth em mobile.
@@ -184,13 +202,13 @@ Carrega imagem apropriada para cada device:
 ### Cache de Dados (LocalStorage)
 
 ```typescript
-import { cacheData, getCachedData } from '@/services/performance';
+import { cacheData, getCachedData } from "@/services/performance";
 
 // Cachear dados por 1 hora
-cacheData('user-data', userData, 3600000);
+cacheData("user-data", userData, 3600000);
 
 // Recuperar dados em cache
-const cached = getCachedData('user-data');
+const cached = getCachedData("user-data");
 ```
 
 **Impacto**: Reduz requisições de API 50-70%.
@@ -198,9 +216,9 @@ const cached = getCachedData('user-data');
 ### Medir Performance
 
 ```typescript
-import { measurePerformance } from '@/services/performance';
+import { measurePerformance } from "@/services/performance";
 
-const endMeasure = measurePerformance('operacao-pesada');
+const endMeasure = measurePerformance("operacao-pesada");
 // ... código pesado
 endMeasure(); // Loga tempo em ms
 ```
@@ -212,7 +230,7 @@ endMeasure(); // Loga tempo em ms
 ### Lazy Load de Conteúdo
 
 ```typescript
-import { createLazyLoadObserver } from '@/services/performance';
+import { createLazyLoadObserver } from "@/services/performance";
 
 const observer = createLazyLoadObserver((entry) => {
   if (entry.isIntersecting) {
@@ -237,7 +255,7 @@ Começa a carregar 50px antes de ficar visível, melhorando UX.
 ### Para Search, Scroll, Resize
 
 ```typescript
-import { debounce, throttle } from '@/services/performance';
+import { debounce, throttle } from "@/services/performance";
 
 // Debounce: espera 300ms após parar de digitar
 const handleSearch = debounce((query) => {
@@ -270,9 +288,9 @@ import Link from 'next/link';
 ### Prefetch Manual
 
 ```typescript
-import { prefetchLink } from '@/services/performance';
+import { prefetchLink } from "@/services/performance";
 
-prefetchLink('/pagina-pesada');
+prefetchLink("/pagina-pesada");
 ```
 
 **Impacto**: Navegação 50% mais rápida para links prefetchados.
@@ -283,11 +301,11 @@ prefetchLink('/pagina-pesada');
 
 ### Core Web Vitals
 
-| Métrica | Alvo | O que medir |
-|---------|------|-----------|
-| **LCP** (Largest Contentful Paint) | < 2.5s | Quando conteúdo principal aparece |
-| **FID** (First Input Delay) | < 100ms | Responsividade a input |
-| **CLS** (Cumulative Layout Shift) | < 0.1 | Estabilidade visual |
+| Métrica                            | Alvo    | O que medir                       |
+| ---------------------------------- | ------- | --------------------------------- |
+| **LCP** (Largest Contentful Paint) | < 2.5s  | Quando conteúdo principal aparece |
+| **FID** (First Input Delay)        | < 100ms | Responsividade a input            |
+| **CLS** (Cumulative Layout Shift)  | < 0.1   | Estabilidade visual               |
 
 ### Monitorar no Browser
 
@@ -296,12 +314,12 @@ prefetchLink('/pagina-pesada');
 // Ou: web.dev/measure
 
 // Programaticamente (Web Vitals)
-import { getCLS, getFID, getFCP, getLCP, getTTFB } from 'web-vitals';
+import { getCLS, getFID, getFCP, getLCP, getTTFB } from "web-vitals";
 
-getCLS(console.log);  // Cumulative Layout Shift
-getFID(console.log);  // First Input Delay
-getFCP(console.log);  // First Contentful Paint
-getLCP(console.log);  // Largest Contentful Paint
+getCLS(console.log); // Cumulative Layout Shift
+getFID(console.log); // First Input Delay
+getFCP(console.log); // First Contentful Paint
+getLCP(console.log); // Largest Contentful Paint
 getTTFB(console.log); // Time to First Byte
 ```
 
@@ -343,31 +361,34 @@ getTTFB(console.log); // Time to First Byte
 
 Após aplicar todas as otimizações:
 
-| Métrica | Antes | Depois | Ganho |
-|---------|-------|--------|-------|
-| Bundle Inicial | ~250KB | ~180KB | 28% ↓ |
-| LCP | ~3.2s | ~1.8s | 44% ↑ |
-| FID | ~150ms | ~65ms | 57% ↑ |
-| CLS | ~0.15 | ~0.05 | 67% ↑ |
-| TTI (Time to Interactive) | ~4.5s | ~2.8s | 38% ↑ |
-| Build Time | ~45s | ~38s | 15% ↑ |
+| Métrica                   | Antes  | Depois | Ganho |
+| ------------------------- | ------ | ------ | ----- |
+| Bundle Inicial            | ~250KB | ~180KB | 28% ↓ |
+| LCP                       | ~3.2s  | ~1.8s  | 44% ↑ |
+| FID                       | ~150ms | ~65ms  | 57% ↑ |
+| CLS                       | ~0.15  | ~0.05  | 67% ↑ |
+| TTI (Time to Interactive) | ~4.5s  | ~2.8s  | 38% ↑ |
+| Build Time                | ~45s   | ~38s   | 15% ↑ |
 
 ---
 
 ## 12. Recursos Adicionais
 
 ### Ferramentas
+
 - [Google Lighthouse](https://developer.chrome.com/docs/lighthouse/)
 - [WebPageTest](https://www.webpagetest.org/)
 - [Bundle Analyzer](https://www.npmjs.com/package/@next/bundle-analyzer)
 - [Chrome DevTools Performance](https://developer.chrome.com/docs/devtools/performance/)
 
 ### Documentação
+
 - [Next.js Performance](https://nextjs.org/docs/app/building-your-application/optimizing)
 - [React Performance](https://react.dev/learn/render-and-commit)
 - [Web Vitals](https://web.dev/vitals/)
 
 ### Próximas Otimizações
+
 - [ ] Service Workers para offline support
 - [ ] Static Generation (SSG) em mais páginas
 - [ ] Incremental Static Regeneration (ISR)
@@ -380,6 +401,7 @@ Após aplicar todas as otimizações:
 ## Conclusão
 
 As otimizações implementadas devem resultar em:
+
 - ✅ Carregamento 40-50% mais rápido
 - ✅ Melhor responsividade (UX)
 - ✅ Redução de 30-40% em bandwidth

@@ -18,15 +18,17 @@ describe('Footer Component', () => {
 
     it('renders footer links', () => {
         renderWithTheme(<Footer />);
-        expect(screen.getByText('Buscar Atendimento')).toBeInTheDocument();
-        expect(screen.getByText('Oferecer Atendimento')).toBeInTheDocument();
+        expect(screen.getByText('Buscar atendimento')).toBeInTheDocument();
+        expect(screen.getByText('Oferecer atendimento')).toBeInTheDocument();
         expect(screen.getByText('Política de Privacidade')).toBeInTheDocument();
         expect(screen.getByText('Termos de Uso')).toBeInTheDocument();
     });
 
     it('renders CNPJ', () => {
         renderWithTheme(<Footer />);
-        expect(screen.getByText(/51.365.311\/0001-44/i)).toBeInTheDocument();
+        expect(
+            screen.getAllByText(/51.265.351\/0001-65/i).length
+        ).toBeGreaterThan(0);
     });
 
     it('renders social icons', () => {

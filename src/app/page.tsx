@@ -8,6 +8,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import ImageHome from './assets/lacrei2.png';
 import FundoLacrei from './assets/fundolacrei.png';
+import PeopleHoding from './assets/peopleHoding.png';
 import PacienteImage from './assets/paciente.png';
 import ProfissionalImage from './assets/profissiona.png';
 
@@ -41,9 +42,10 @@ const HeroContent = styled.div`
     align-items: center;
 
     @media (max-width: ${(props) => props.theme.breakpoints.tablet}) {
-        padding: 1rem;
+        padding: 1.5rem 1rem;
         flex-direction: column;
-        justify-content: center;
+        align-items: flex-start;
+        justify-content: flex-start;
     }
 `;
 
@@ -58,10 +60,15 @@ const HeroText = styled.div`
         color: ${(props) => props.theme.colors.primary};
     }
 
+    .hero-card {
+        display: contents;
+    }
+
     p {
         font-size: 2rem;
         margin-bottom: 2.4rem;
-        color: ${(props) => props.theme.colors.text};
+        color: ${(props) =>
+            props.theme.colors.text.default || props.theme.colors.text};
         line-height: 1.45;
     }
 
@@ -71,13 +78,26 @@ const HeroText = styled.div`
 
     @media (max-width: ${(props) => props.theme.breakpoints.tablet}) {
         text-align: left;
+        width: 100%;
 
         h1 {
             font-size: 2.3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-card {
+            display: block;
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            margin-top: 1rem;
         }
 
         p {
-            font-size: 1.3rem;
+            font-size: 1.05rem;
+            margin-bottom: 1.5rem;
+            color: #485467;
         }
     }
 `;
@@ -87,14 +107,16 @@ const ButtonGroup = styled.div`
     gap: 1rem;
 
     @media (max-width: ${(props) => props.theme.breakpoints.tablet}) {
+        flex-direction: column;
         width: 100%;
 
         a {
-            flex: 1;
+            width: 100%;
         }
 
         button {
             width: 100%;
+            font-size: 1.125rem;
         }
     }
 `;
@@ -161,7 +183,7 @@ const SectionLead = styled.p`
 const Divider = styled.div`
     width: 150px;
     height: 3px;
-    background: ${(props) => props.theme.gradients.rainbow};
+    background: ${(props) => props.theme.colors.primary};
     margin: 1.4rem auto 0;
 `;
 
@@ -198,60 +220,93 @@ const FeatureCard = styled.article`
 `;
 
 const IconBubble = styled.div`
-    width: 90px;
-    height: 90px;
+    width: 100px;
+    height: 100px;
     border-radius: 50%;
-    background: ${(props) => props.theme.gradients.rainbow};
+    background: #015786;
     color: #ffffff;
     margin: 0 auto;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 2.2rem;
-    box-shadow: 0 4px 12px rgba(1, 135, 98, 0.2);
-`;
+    box-shadow: 0 6px 16px rgba(1, 87, 134, 0.25);
 
-const AboutSection = styled(Section)`
-    display: grid;
-    grid-template-columns: 1.6fr 1fr;
-    gap: 1.5rem;
-    align-items: center;
-
-    @media (max-width: ${(props) => props.theme.breakpoints.tablet}) {
-        grid-template-columns: 1fr;
+    svg {
+        width: 48px;
+        height: 48px;
     }
 `;
 
-const AboutImage = styled.div`
-    min-height: 430px;
-    border-radius: 16px;
-    overflow: hidden;
+const AboutSection = styled.section`
+    width: 100%;
+    max-width: 1216px;
+    margin: 4rem auto;
+    display: flex;
+    align-items: center;
     position: relative;
-    background: #dcebe6;
+    padding: 0 2rem;
+
+    @media (max-width: ${(props) => props.theme.breakpoints.tablet}) {
+        flex-direction: column;
+        padding: 0 1rem;
+    }
+`;
+
+const AboutImageContainer = styled.div`
+    flex: 1.2;
+    border-radius: 24px;
+    overflow: hidden;
+    height: 520px;
+    position: relative;
+
+    @media (max-width: ${(props) => props.theme.breakpoints.tablet}) {
+        width: 100%;
+        height: 300px;
+        margin-bottom: -2rem;
+        z-index: 1;
+    }
 `;
 
 const AboutCard = styled.article`
-    background: ${(props) => props.theme.colors.white};
-    border-radius: 12px;
-    border: 1px solid #dbe1e8;
-    padding: 2rem;
-    box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
+    flex: 1;
+    background: white;
+    padding: 3.5rem;
+    border-radius: 16px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+    border: 1px solid #edf2f7;
+    margin-left: -5rem;
+    z-index: 2;
+    position: relative;
 
-    h3 {
-        font-size: 3rem;
+    @media (max-width: ${(props) => props.theme.breakpoints.tablet}) {
+        margin-left: 0;
+        width: 90%;
+        padding: 2.5rem;
+    }
+
+    h2 {
+        font-size: 2.8rem;
+        font-weight: 700;
         color: ${(props) => props.theme.colors.secondary};
+        margin-bottom: 1rem;
+    }
+
+    .divider {
+        width: 140px;
+        height: 2px;
+        background-color: ${(props) => props.theme.colors.primary};
+        margin-bottom: 2rem;
     }
 
     p {
-        margin-top: 1rem;
-        color: ${(props) => props.theme.colors.text};
-        font-size: 1.5rem;
+        font-size: 1.2rem;
         line-height: 1.6;
-    }
+        color: ${(props) => props.theme.colors.text.default};
+        margin-bottom: 1.5rem;
 
-    a {
-        display: inline-block;
-        margin-top: 1.7rem;
+        &:last-of-type {
+            margin-bottom: 2rem;
+        }
     }
 `;
 
@@ -304,85 +359,126 @@ const StepCard = styled.article`
 `;
 
 const StepCircle = styled.div`
-    width: 120px;
-    height: 120px;
+    width: 100px;
+    height: 100px;
     margin: 0 auto;
     border-radius: 50%;
-    background: ${(props) => props.theme.gradients.rainbow};
+    background: #015786;
     color: #ffffff;
-    font-size: 2.2rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 6px 16px rgba(1, 135, 98, 0.25);
+    position: relative;
+    box-shadow: 0 6px 16px rgba(1, 87, 134, 0.25);
+
+    .number-bubble {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 36px;
+        height: 36px;
+        background: #015786;
+        border: 3px solid #ffffff;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.125rem;
+        font-weight: 700;
+        color: #ffffff;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    }
+
+    svg {
+        width: 48px;
+        height: 48px;
+    }
 `;
 
-const AudienceSection = styled(Section)`
-    background: ${(props) => props.theme.gradients.rainbowSubtle};
-    max-width: none;
-    margin: 0;
+const AudienceSection = styled.section`
     padding: 4rem 0;
+    max-width: 1216px;
+    margin: 0 auto;
 
     > div {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 2rem;
         display: flex;
         flex-direction: column;
-        gap: 2rem;
+        gap: 3rem;
+        padding: 0 2rem;
     }
-`;
-
-const AudienceCard = styled.article`
-    background: ${(props) => props.theme.colors.white};
-    border-radius: 24px;
-    overflow: hidden;
-    display: grid;
-    grid-template-columns: 1fr 1.2fr;
-    box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
 
     @media (max-width: ${(props) => props.theme.breakpoints.tablet}) {
-        grid-template-columns: 1fr;
+        padding: 2rem 0;
+        > div {
+            padding: 0 1rem;
+            gap: 2rem;
+        }
     }
 `;
 
-const AudienceImage = styled.div`
-    position: relative;
-    min-height: 260px;
-    background: linear-gradient(135deg, #018762 0%, #008026 100%);
+const AudienceCard = styled.article<{ $reverse?: boolean }>`
+    background: ${(props) => props.theme.colors.white};
+    border-radius: 34px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: ${(props) => (props.$reverse ? 'row-reverse' : 'row')};
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+    align-items: center;
 
-    img {
-        opacity: 0.88;
+    @media (max-width: ${(props) => props.theme.breakpoints.tablet}) {
+        flex-direction: column;
+        border-radius: 16px;
+    }
+`;
+
+const AudienceImage = styled.div<{ $reverse?: boolean }>`
+    position: relative;
+    flex: 1;
+    height: 360px;
+    background: #018762;
+    clip-path: ${(props) =>
+        props.$reverse ? 'circle(85% at 91% 46%)' : 'circle(85.2% at 11% 49%)'};
+    border-radius: ${(props) =>
+        props.$reverse ? '0px 34px 34px 0px' : '34px 0px 0px 34px'};
+    overflow: hidden;
+
+    @media (max-width: ${(props) => props.theme.breakpoints.tablet}) {
+        display: none;
     }
 `;
 
 const AudienceContent = styled.div`
-    padding: 2.1rem;
+    flex: 1.2;
+    padding: 2.5rem;
 
     h3 {
         color: ${(props) => props.theme.colors.secondary};
-        font-size: 3rem;
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 1.5rem;
     }
 
     p {
-        margin-top: 0.8rem;
-        color: ${(props) => props.theme.colors.text};
-        font-size: 1.5rem;
-        line-height: 1.55;
-        border-left: 3px solid ${(props) => props.theme.colors.primary};
-        padding-left: 0.85rem;
+        color: ${(props) => props.theme.colors.text.default};
+        font-size: 1.125rem;
+        line-height: 1.5;
+        margin-bottom: 2rem;
+        border-left: 2px solid ${(props) => props.theme.colors.primary};
+        padding-left: 1rem;
     }
 
     a {
-        margin-top: 1.4rem;
         display: inline-block;
         width: 100%;
     }
 
     button {
         width: 100%;
-        font-size: 1.45rem;
-        padding: 0.95rem 1.2rem;
+    }
+
+    @media (max-width: ${(props) => props.theme.breakpoints.tablet}) {
+        padding: 2rem 1.5rem;
+        text-align: left;
     }
 `;
 
@@ -415,16 +511,6 @@ const FinalCard = styled.article`
     position: relative;
     overflow: hidden;
 
-    &::before {
-        content: '';
-        position: absolute;
-        top: -2px;
-        left: 0;
-        right: 0;
-        height: 2px;
-        background: ${(props) => props.theme.gradients.rainbow};
-    }
-
     h3 {
         margin-top: 0.8rem;
         color: ${(props) => props.theme.colors.primary};
@@ -445,6 +531,31 @@ const FinalCard = styled.article`
     }
 `;
 
+const FinalCardButton = styled(Button)`
+    min-width: 224px;
+    min-height: 48px;
+    padding: 0.875rem 2rem;
+    border-radius: 10px;
+    background-color: #ffffff;
+    color: #018762;
+    border-color: #018762;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+
+    &:hover {
+        background-color: #ffffff;
+        color: #018762;
+        border-color: #018762;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+    }
+
+    &:active {
+        background-color: #ffffff;
+        color: #018762;
+        border-color: #018762;
+        transform: none;
+    }
+`;
+
 /** Screen: 1I / Início */
 export default function Home() {
     return (
@@ -457,28 +568,31 @@ export default function Home() {
                         src={ImageHome}
                         alt="Background Lacrei"
                         fill
-                        unoptimized
                         style={{ objectFit: 'cover' }}
                         priority
+                        sizes="100vw"
                     />
                 </HeroImageLayer>
 
                 <HeroContent>
                     <HeroText>
                         <h1>Olá, você está na Lacrei Saúde!</h1>
-                        <p>
-                            Conectamos pessoas <strong>LGBTQIAPN+</strong> com
-                            profissionais de saúde qualificados, proporcionando
-                            experiências de cuidado seguras e inclusivas.
-                        </p>
-                        <ButtonGroup>
-                            <Link href="/entrar">
-                                <Button>Para pacientes</Button>
-                            </Link>
-                            <Link href="/profissional">
-                                <Button>Para profissionais</Button>
-                            </Link>
-                        </ButtonGroup>
+                        <div className="hero-card">
+                            <p>
+                                Conectamos pessoas <strong>LGBTQIAPN+</strong>{' '}
+                                com profissionais de saúde qualificados,
+                                proporcionando experiências de cuidado seguras e
+                                inclusivas.
+                            </p>
+                            <ButtonGroup>
+                                <Link href="/entrar">
+                                    <Button>Para pacientes</Button>
+                                </Link>
+                                <Link href="/profissional">
+                                    <Button>Para profissionais</Button>
+                                </Link>
+                            </ButtonGroup>
+                        </div>
                     </HeroText>
                 </HeroContent>
             </Hero>
@@ -491,7 +605,19 @@ export default function Home() {
                 <SectionLead>Atendimento de qualidade e inclusivo</SectionLead>
                 <FeatureGrid>
                     <FeatureCard>
-                        <IconBubble>🤝</IconBubble>
+                        <IconBubble>
+                            <svg
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                            >
+                                <path d="M11 12h2a2 2 0 1 0 0-4h-3c-1.1 0-2 .9-2 2v5h3l3 3V12" />
+                                <path d="M18 11V6a2 2 0 1 0-4 0v4" />
+                            </svg>
+                        </IconBubble>
                         <h3>Inclusão</h3>
                         <p>
                             Nossa plataforma digital é acessível e atende toda a
@@ -500,7 +626,18 @@ export default function Home() {
                     </FeatureCard>
 
                     <FeatureCard>
-                        <IconBubble>♡</IconBubble>
+                        <IconBubble>
+                            <svg
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                            >
+                                <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
+                            </svg>
+                        </IconBubble>
                         <h3>Acolhimento</h3>
                         <p>
                             As pessoas profissionais da saúde entendem as
@@ -509,7 +646,18 @@ export default function Home() {
                     </FeatureCard>
 
                     <FeatureCard>
-                        <IconBubble>🛡️</IconBubble>
+                        <IconBubble>
+                            <svg
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                            >
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z" />
+                            </svg>
+                        </IconBubble>
                         <h3>Segurança</h3>
                         <p>
                             Protegemos seus dados e validamos pacientes e
@@ -520,30 +668,36 @@ export default function Home() {
             </Section>
 
             <AboutSection>
-                <AboutImage>
+                <AboutImageContainer>
                     <Image
-                        src={FundoLacrei}
-                        alt="Duas pessoas segurando uma bandeira arco-íris representando inclusão e diversidade"
+                        src={PeopleHoding}
+                        alt="O papel da Lacrei Saúde na conexão entre pessoas LGBTQIAPN+ e profissionais de saúde."
                         fill
                         style={{ objectFit: 'cover' }}
-                        unoptimized
+                        sizes="(max-width: 768px) 100vw, 50vw"
                     />
-                </AboutImage>
+                </AboutImageContainer>
 
                 <AboutCard>
-                    <h3>O que é a Lacrei Saúde?</h3>
+                    <h2>O que é a Lacrei Saúde?</h2>
+                    <div className="divider" />
                     <p>
-                        A Lacrei Saúde conecta pessoas da comunidade LGBTQIAPN+
-                        com profissionais de saúde comprometidos em oferecer um
-                        atendimento seguro, inclusivo e respeitoso.
+                        O nosso papel é construir a conexão entre as pessoas da
+                        comunidade LGBTQIAPN+ que precisam de atendimento
+                        clínico com profissionais da saúde.
                     </p>
                     <p>
-                        Nosso propósito é garantir representatividade, empatia e
-                        acolhimento em cada consulta promovendo acesso
-                        igualitário à saúde para todas as pessoas.
+                        Tudo isso com segurança, inclusão e representatividade.
+                        Surgimos da esperança de ter um atendimento clínico
+                        qualificado, seguro e empático para todas as pessoas.
                     </p>
                     <Link href="/quem-somos">
-                        <Button $variant="outline">Conhecer</Button>
+                        <Button
+                            $variant="outline"
+                            style={{ padding: '0.875rem 3rem' }}
+                        >
+                            Conhecer
+                        </Button>
                     </Link>
                 </AboutCard>
             </AboutSection>
@@ -558,27 +712,84 @@ export default function Home() {
 
                     <StepsGrid>
                         <StepCard>
-                            <StepCircle>✉</StepCircle>
+                            <StepCircle>
+                                <div className="number-bubble">1</div>
+                                <svg
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    strokeWidth="2"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                >
+                                    <rect
+                                        width="20"
+                                        height="16"
+                                        x="2"
+                                        y="4"
+                                        rx="2"
+                                    />
+                                    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+                                </svg>
+                            </StepCircle>
                             <p>
                                 Cadastre-se gratuitamente em nossa plataforma.
                             </p>
                         </StepCard>
                         <StepCard>
-                            <StepCircle>⌕</StepCircle>
+                            <StepCircle>
+                                <div className="number-bubble">2</div>
+                                <svg
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    strokeWidth="2"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                >
+                                    <circle cx="11" cy="11" r="8" />
+                                    <path d="m21 21-4.3-4.3" />
+                                </svg>
+                            </StepCircle>
                             <p>
                                 Encontre profissionais da saúde qualificados
                                 através de uma busca descomplicada.
                             </p>
                         </StepCard>
                         <StepCard>
-                            <StepCircle>✓</StepCircle>
+                            <StepCircle>
+                                <div className="number-bubble">3</div>
+                                <svg
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    strokeWidth="2"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                >
+                                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                                    <path d="m9 11 3 3L22 4" />
+                                </svg>
+                            </StepCircle>
                             <p>
-                                Valide seu contato por SMS para garantir
-                                segurança no atendimento.
+                                Valide seu contato por SMS, para segurança no
+                                atendimento.
                             </p>
                         </StepCard>
                         <StepCard>
-                            <StepCircle>☎</StepCircle>
+                            <StepCircle>
+                                <div className="number-bubble">4</div>
+                                <svg
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    strokeWidth="2"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                >
+                                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                                </svg>
+                            </StepCircle>
                             <p>
                                 Entre em contato com a pessoa profissional
                                 escolhida e marque sua consulta.
@@ -594,18 +805,17 @@ export default function Home() {
                         <AudienceImage>
                             <Image
                                 src={PacienteImage}
-                                alt="Pessoa sorrindo com cabelo colorido e bandeira LGBTQIAPN+ sobre os ombros"
+                                alt="Paciente sorridente representando a comunidade LGBTQIAPN+."
                                 fill
                                 style={{ objectFit: 'cover' }}
-                                unoptimized
+                                sizes="(max-width: 768px) 100vw, 40vw"
                             />
                         </AudienceImage>
                         <AudienceContent>
                             <h3>Pacientes</h3>
                             <p>
-                                Conecte-se a profissionais da saúde que entendem
-                                e estudam as necessidades da comunidade
-                                LGBTQIAPN+.
+                                Conecte-se a profissionais da saúde que estudam
+                                as necessidades da comunidade LGBTQIAPN+.
                             </p>
                             <Link href="/entrar">
                                 <Button>Buscar atendimento</Button>
@@ -613,24 +823,25 @@ export default function Home() {
                         </AudienceContent>
                     </AudienceCard>
 
-                    <AudienceCard>
-                        <AudienceImage>
+                    <AudienceCard $reverse>
+                        <AudienceImage $reverse>
                             <Image
                                 src={ProfissionalImage}
-                                alt="Profissional da saúde conversando com empatia simbolizando acolhimento e diversidade"
+                                alt="Profissional da saúde especializado no atendimento à comunidade LGBTQIAPN+."
                                 fill
                                 style={{ objectFit: 'cover' }}
-                                unoptimized
+                                sizes="(max-width: 768px) 100vw, 40vw"
                             />
                         </AudienceImage>
                         <AudienceContent>
-                            <h3>Sou Profissional</h3>
+                            <h3>Profissionais da saúde</h3>
                             <p>
-                                Amplie sua rede de pacientes e ofereça um
-                                atendimento que valoriza a diversidade.
+                                Buscamos profissionais da saúde qualificados que
+                                priorizam o bem-estar físico e mental de pessoas
+                                LGBTQIAPN+.
                             </p>
                             <Link href="/profissional">
-                                <Button>Cadastrar como Profissional</Button>
+                                <Button>Oferecer atendimento</Button>
                             </Link>
                         </AudienceContent>
                     </AudienceCard>
@@ -642,38 +853,88 @@ export default function Home() {
 
                 <FinalGrid>
                     <FinalCard>
-                        <IconBubble>🛡️</IconBubble>
+                        <IconBubble>
+                            <svg
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                            >
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z" />
+                            </svg>
+                        </IconBubble>
                         <h3>Segurança</h3>
                         <p>
                             Entenda como validamos pacientes e profissionais da
                             saúde.
                         </p>
                         <Link href="/seguranca">
-                            <Button>Entenda</Button>
+                            <FinalCardButton $variant="outline">
+                                Entenda
+                            </FinalCardButton>
                         </Link>
                     </FinalCard>
 
                     <FinalCard>
-                        <IconBubble>🤟</IconBubble>
+                        <IconBubble>
+                            <svg
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                            >
+                                <path d="M10 14h4" />
+                                <path d="M12 10v8" />
+                                <path d="m8 10 4-4 4 4" />
+                                <rect
+                                    width="20"
+                                    height="12"
+                                    x="2"
+                                    y="4"
+                                    rx="2"
+                                />
+                            </svg>
+                        </IconBubble>
                         <h3>Acessibilidade</h3>
                         <p>
                             Conheça nossos recursos que tornam a plataforma
                             Lacrei Saúde acessível.
                         </p>
                         <Link href="/acessibilidade">
-                            <Button>Conheça</Button>
+                            <FinalCardButton $variant="outline">
+                                Conheça
+                            </FinalCardButton>
                         </Link>
                     </FinalCard>
 
                     <FinalCard>
-                        <IconBubble>❓</IconBubble>
+                        <IconBubble>
+                            <svg
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                            >
+                                <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z" />
+                                <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
+                                <path d="M12 17h.01" />
+                            </svg>
+                        </IconBubble>
                         <h3>Dúvidas Frequentes</h3>
                         <p>
                             Acesse nossa lista de perguntas frequentes e tire
                             suas dúvidas.
                         </p>
                         <Link href="/duvidas-frequentes">
-                            <Button>Acesse</Button>
+                            <FinalCardButton $variant="outline">
+                                Acesse
+                            </FinalCardButton>
                         </Link>
                     </FinalCard>
                 </FinalGrid>

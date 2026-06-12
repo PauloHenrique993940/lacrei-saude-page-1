@@ -114,7 +114,6 @@ export default function Profissional() {
                         src={profissionaisSaude}
                         alt="Time de profissionais de saúde"
                         fill
-                        unoptimized
                         style={{ objectFit: 'cover' }}
                         sizes="(max-width: 768px) 100vw, 50vw"
                     />

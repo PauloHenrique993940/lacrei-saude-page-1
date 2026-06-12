@@ -26,7 +26,7 @@ const renderWithTheme = (component: React.ReactElement) => {
 describe('Header Component', () => {
     it('renders the logo correctly', () => {
         renderWithTheme(<Header />);
-        expect(screen.getByText('Lacrei Saúde')).toBeInTheDocument();
+        expect(screen.getByAltText('Lacrei Saúde')).toBeInTheDocument();
     });
 
     it('renders navigation links', () => {
