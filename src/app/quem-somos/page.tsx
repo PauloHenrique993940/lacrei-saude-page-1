@@ -1,16 +1,16 @@
 'use client';
 
 import styled from 'styled-components';
-import { Header } from '@/components/Header';
-import { Footer } from '@/components/Footer';
-import { Button } from '@/components/Button';
+import { Header } from '../../components/Header';
+import { Footer } from '../../components/Footer';
+import { Button } from '../../components/Button';
 import Image from 'next/image';
 import Link from 'next/link';
-import FundoLacrei from '@/app/assets/fundolacrei.png';
-import PacienteImage from '@/app/assets/paciente.png';
-import ProfissionalImage from '@/app/assets/profissiona.png';
-import ImageProfissional from '@/app/assets/ImageProfissional.png';
-import ImagePaciente from '@/app/assets/iagePaciente.png';
+import FundoLacrei from '../assets/fundolacrei.png';
+import PacienteImage from '../assets/paciente.png';
+import ProfissionalImage from '../assets/profissiona.png';
+import ImageProfissional from '../assets/ImageProfissional.png';
+import ImagePaciente from '../assets/iagePaciente.png';
 
 const Main = styled.main`
     display: flex;
@@ -36,7 +36,7 @@ const Section = styled.div`
     display: grid;
     grid-template-columns: 1fr 1fr;
     align-items: center;
-    gap: 2rem;
+    gap: 2.4rem;
 
     @media (max-width: ${(props) => props.theme.breakpoints.tablet}) {
         grid-template-columns: 1fr;
@@ -47,13 +47,13 @@ const Section = styled.div`
 const TextBlock = styled.div`
     h1,
     h2 {
-        font-size: 2.5rem;
+        font-size: 3rem;
         margin-bottom: 1.5rem;
         color: ${(props) => props.theme.colors.secondary};
     }
 
     p {
-        font-size: 1.125rem;
+        font-size: 1.3rem;
         margin-bottom: 1.5rem;
         color: ${(props) => props.theme.colors.text};
         line-height: 1.6;
@@ -66,13 +66,26 @@ const ImageWrapper = styled.div`
     height: 400px;
     border-radius: 16px;
     overflow: hidden;
+    box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
 `;
 
 const CTA = styled.div`
-    background-color: #f8f9fa;
+    background-color: #ffffff;
     padding: 3rem;
     border-radius: 24px;
     text-align: center;
+    box-shadow: 0 10px 24px rgba(15, 23, 42, 0.06);
+
+    h2 {
+        font-size: 2.3rem;
+        color: ${(props) => props.theme.colors.secondary};
+    }
+
+    p {
+        margin-top: 0.7rem;
+        color: ${(props) => props.theme.colors.text};
+        font-size: 1.25rem;
+    }
 `;
 
 const GallerySection = styled.section`

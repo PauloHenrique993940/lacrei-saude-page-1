@@ -1,6 +1,6 @@
 'use client';
 
-import { theme } from '@/styles/theme';
+import { theme } from '../../styles/theme';
 import { render, screen } from '@testing-library/react';
 import { ThemeProvider } from 'styled-components';
 import { Footer } from './index';
@@ -18,7 +18,8 @@ describe('Footer Component', () => {
 
     it('renders footer links', () => {
         renderWithTheme(<Footer />);
-        expect(screen.getByText('Pessoas Profissionais')).toBeInTheDocument();
+        expect(screen.getByText('Buscar Atendimento')).toBeInTheDocument();
+        expect(screen.getByText('Oferecer Atendimento')).toBeInTheDocument();
         expect(screen.getByText('Política de Privacidade')).toBeInTheDocument();
         expect(screen.getByText('Termos de Uso')).toBeInTheDocument();
     });

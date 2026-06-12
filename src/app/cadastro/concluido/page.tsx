@@ -2,13 +2,13 @@
 
 import React from 'react';
 import styled from 'styled-components';
-import { Header } from '@/components/Header';
-import { Footer } from '@/components/Footer';
-import { Button } from '@/components/Button';
+import { Header } from '../../../components/Header';
+import { Footer } from '../../../components/Footer';
+import { Button } from '../../../components/Button';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
-import { saveUserOnboarding } from '@/services/api';
-import { useOnboarding } from '@/providers/OnboardingContext';
+import { saveUserOnboarding } from '../../../services/api';
+import { useOnboarding } from '../../../providers/OnboardingContext';
 
 const Main = styled.main`
     display: flex;

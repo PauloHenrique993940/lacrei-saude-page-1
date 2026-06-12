@@ -2,13 +2,13 @@
 
 import React from 'react';
 import styled from 'styled-components';
-import { Header } from '@/components/Header';
-import { Footer } from '@/components/Footer';
-import { Button } from '@/components/Button';
-import { Stepper } from '@/components/Stepper';
-import { RadioGroup } from '@/components/RadioGroup';
+import { Header } from '../../../components/Header';
+import { Footer } from '../../../components/Footer';
+import { Button } from '../../../components/Button';
+import { Stepper } from '../../../components/Stepper';
+import { RadioGroup } from '../../../components/RadioGroup';
 import Link from 'next/link';
-import { useOnboarding } from '@/providers/OnboardingContext';
+import { useOnboarding } from '../../../providers/OnboardingContext';
 
 const Main = styled.main`
     display: flex;
@@ -52,8 +52,7 @@ const NavigationGroup = styled.div`
     justify-content: space-between;
     margin-top: 2rem;
 
-    @media (max-width: ${(props) =>
-            props.theme.breakpoints.tablet}) {
+    @media (max-width: ${(props) => props.theme.breakpoints.tablet}) {
         flex-direction: column-reverse;
         gap: 1rem;
 

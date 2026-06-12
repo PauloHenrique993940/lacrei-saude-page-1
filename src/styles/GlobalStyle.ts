@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
   * {
@@ -11,10 +11,14 @@ export const GlobalStyle = createGlobalStyle`
 
   body {
     font-family: 'Nunito', sans-serif;
-    color: ${(props) => props.theme?.colors?.secondary || '#7B2CBF'};
-    background-color: ${(props) => props.theme?.colors?.background || '#FFFFFF'};
+    color: ${(props) => props.theme?.colors?.secondary || "#1F2937"};
+    background-color: ${(props) => props.theme?.colors?.background || "#F3F4F6"};
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+  }
+
+  main {
+    width: 100%;
   }
 
   a {

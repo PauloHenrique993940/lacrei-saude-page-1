@@ -2,9 +2,9 @@
 
 import React from 'react';
 import styled from 'styled-components';
-import { Header } from '@/components/Header';
-import { Footer } from '@/components/Footer';
-import { Button } from '@/components/Button';
+import { Header } from '../../components/Header';
+import { Footer } from '../../components/Footer';
+import { Button } from '../../components/Button';
 import Link from 'next/link';
 
 const Main = styled.main`
@@ -15,34 +15,45 @@ const Main = styled.main`
 
 const Content = styled.section`
     flex: 1;
-    max-width: 1000px;
+    max-width: 1100px;
     margin: 0 auto;
     width: 100%;
     padding: 4rem 2rem;
 `;
 
 const Title = styled.h1`
-    font-size: 2.5rem;
+    font-size: 3rem;
     font-weight: 700;
     margin-bottom: 2rem;
     color: ${(props) => props.theme.colors.secondary};
+    text-align: center;
 `;
 
 const FaqSection = styled.div`
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.2rem;
+
+    @media (max-width: ${(props) => props.theme.breakpoints.tablet}) {
+        grid-template-columns: 1fr;
+    }
 `;
 
 const Question = styled.div`
+    background: ${(props) => props.theme.colors.surface};
+    border-radius: 12px;
+    padding: 1.6rem;
+    box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
+
     h3 {
-        font-size: 1.25rem;
+        font-size: 1.5rem;
         font-weight: 700;
         margin-bottom: 0.75rem;
         color: ${(props) => props.theme.colors.primary};
     }
+
     p {
-        font-size: 1rem;
+        font-size: 1.15rem;
         line-height: 1.6;
         color: ${(props) => props.theme.colors.text};
     }
@@ -50,10 +61,11 @@ const Question = styled.div`
 
 const ContactInfo = styled.div`
     margin-top: 4rem;
-    padding: 2rem;
-    background-color: #f8f9fa;
+    padding: 2.2rem;
+    background-color: #ffffff;
     border-radius: 12px;
     text-align: center;
+    box-shadow: 0 10px 24px rgba(15, 23, 42, 0.06);
 
     h2 {
         margin-bottom: 1rem;

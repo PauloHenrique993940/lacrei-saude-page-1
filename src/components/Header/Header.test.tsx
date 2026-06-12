@@ -1,6 +1,6 @@
 'use client';
 
-import { theme } from '@/styles/theme';
+import { theme } from '../../styles/theme';
 import { render, screen } from '@testing-library/react';
 import { ThemeProvider } from 'styled-components';
 import { Header } from './index';
@@ -8,6 +8,15 @@ import { Header } from './index';
 // Mock next/navigation
 jest.mock('next/navigation', () => ({
     usePathname: () => '/',
+}));
+
+jest.mock('@/providers/AuthContext', () => ({
+    useAuth: () => ({
+        isAuthenticated: false,
+        user: null,
+        logout: jest.fn(),
+        isReady: true,
+    }),
 }));
 
 const renderWithTheme = (component: React.ReactElement) => {
@@ -22,7 +31,7 @@ describe('Header Component', () => {
 
     it('renders navigation links', () => {
         renderWithTheme(<Header />);
-        expect(screen.getByText('Quem somos')).toBeInTheDocument();
+        expect(screen.getByText('Quem Somos')).toBeInTheDocument();
         expect(screen.getByText('Ajuda')).toBeInTheDocument();
     });
 

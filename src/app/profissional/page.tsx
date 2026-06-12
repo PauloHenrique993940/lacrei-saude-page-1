@@ -1,12 +1,12 @@
 'use client';
 
 import styled from 'styled-components';
-import { Header } from '@/components/Header';
-import { Footer } from '@/components/Footer';
-import { Button } from '@/components/Button';
+import { Header } from '../../components/Header';
+import { Footer } from '../../components/Footer';
+import { Button } from '../../components/Button';
 import Image from 'next/image';
 import Link from 'next/link';
-import profissionaisSaude from '@/app/assets/profissionaisSaude.avif';
+import profissionaisSaude from '../assets/profissionaisSaude.avif';
 
 const Main = styled.main`
     display: flex;
@@ -17,10 +17,10 @@ const Main = styled.main`
 const Content = styled.section`
     flex: 1;
     padding: 2rem 4rem;
-    max-width: 1280px;
+    max-width: 1200px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1.1fr;
     align-items: center;
     gap: 4rem;
 
@@ -35,17 +35,17 @@ const Content = styled.section`
 
 const TextBlock = styled.div`
     h1 {
-        font-size: 3rem;
+        font-size: 3.4rem;
         font-weight: 700;
         line-height: 1.2;
         margin-bottom: 2rem;
-        color: ${(props) => props.theme?.colors?.secondary || '#7B2CBF'};
+        color: ${(props) => props.theme?.colors?.secondary || '#1F2937'};
     }
 
     p {
         font-size: 1.5rem;
         margin-bottom: 3rem;
-        color: ${(props) => props.theme?.colors?.text || '#515151'};
+        color: ${(props) => props.theme?.colors?.text || '#485467'};
         line-height: 1.5;
     }
 
@@ -61,11 +61,15 @@ const TextBlock = styled.div`
 
 const ButtonGroup = styled.div`
     display: flex;
-    gap: 2rem;
+    gap: 1rem;
 
     @media (max-width: ${(props) => props.theme.breakpoints.tablet}) {
         flex-direction: column;
         align-items: stretch;
+
+        button {
+            width: 100%;
+        }
     }
 `;
 
@@ -76,6 +80,7 @@ const ImageContainer = styled.div`
     box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
     border-radius: 24px;
     overflow: hidden;
+    background: #e9f2ef;
 
     @media (max-width: ${(props) => props.theme.breakpoints.tablet}) {
         height: 320px;
@@ -96,13 +101,11 @@ export default function Profissional() {
                         o time de profissionais da Lacrei Saúde.
                     </p>
                     <ButtonGroup>
-                        <Link href="/">
+                        <Link href="/entrar">
                             <Button>Buscar atendimento</Button>
                         </Link>
-                        <Link href="/">
-                            <Button $variant="outline">
-                                Oferecer atendimento
-                            </Button>
+                        <Link href="/criar-conta">
+                            <Button>Oferecer atendimento</Button>
                         </Link>
                     </ButtonGroup>
                 </TextBlock>

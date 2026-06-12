@@ -1,11 +1,11 @@
 'use client';
 
 import styled from 'styled-components';
-import { Header } from '@/components/Header';
-import { Footer } from '@/components/Footer';
-import { Button } from '@/components/Button';
+import { Header } from '../../../components/Header';
+import { Footer } from '../../../components/Footer';
+import { Button } from '../../../components/Button';
 import Image from 'next/image';
-import MedicoCuidandoPaciente from '@/app/assets/medicoCuidandoPaciente.png';
+import MedicoCuidandoPaciente from '../../assets/medicoCuidandoPaciente.png';
 import Link from 'next/link';
 
 const Main = styled.main`

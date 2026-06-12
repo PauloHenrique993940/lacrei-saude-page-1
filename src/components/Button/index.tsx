@@ -7,7 +7,7 @@ interface ButtonProps {
 }
 
 export const Button = styled.button<ButtonProps>`
-    padding: 0.75rem 2rem;
+    padding: 0.8rem 2rem;
     border-radius: 8px;
     font-weight: 700;
     font-size: 1rem;
@@ -20,7 +20,7 @@ export const Button = styled.button<ButtonProps>`
     ${(props) => {
         const colors = props.theme?.colors || {
             white: '#FFFFFF',
-            primary: '#FF4D8D',
+            primary: '#018762',
         };
         switch (props.$variant) {
             case 'secondary':
@@ -34,7 +34,7 @@ export const Button = styled.button<ButtonProps>`
                 return `
           background-color: transparent;
           color: ${colors.primary};
-          border: 2px solid ${colors.primary};
+                    border: 1px solid ${colors.primary};
           &:hover { 
             background-color: ${colors.primary};
             color: ${colors.white};
@@ -44,7 +44,8 @@ export const Button = styled.button<ButtonProps>`
                 return `
           background-color: ${colors.primary};
           color: ${colors.white};
-          box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+                    box-shadow: 0px 4px 12px rgba(1, 135, 98, 0.24);
+                    border: 1px solid ${colors.primary};
           &:hover { opacity: 0.9; }
         `;
         }
@@ -52,7 +53,7 @@ export const Button = styled.button<ButtonProps>`
 
     &:focus {
         outline: 3px solid
-            ${(props) => props.theme?.colors?.primary || '#FF4D8D'};
+            ${(props) => props.theme?.colors?.primary || '#018762'};
         outline-offset: 2px;
     }
 `;

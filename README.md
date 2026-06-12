@@ -3,6 +3,7 @@
 Este projeto foi desenvolvido como parte do desafio técnico para voluntariado na **Lacrei Saúde**. A aplicação é uma plataforma interativa focada em acessibilidade, responsividade e performance, utilizando as tecnologias mais modernas do ecossistema React.
 
 ## Links Úteis
+
 - **Deploy na Vercel**: [https://lacrei-saude-desafio.vercel.app](https://lacrei-saude-desafio.vercel.app)
 - **Repositório GitHub**: [https://github.com/PauloHenrique993940/lacrei-saude-page-1.git](https://github.com/PauloHenrique993940/lacrei-saude-page-1.git)
 
@@ -19,23 +20,28 @@ Este projeto foi desenvolvido como parte do desafio técnico para voluntariado n
 Siga os passos abaixo para executar a aplicação em sua máquina:
 
 1. **Clone o repositório**:
+
    ```bash
    git clone https://github.com/PauloHenrique993940/lacrei-saude-page-1.git
    cd lacrei-saude-page-1
    ```
 
 2. **Instale as dependências**:
+
    ```bash
    npm install
    ```
 
 3. **Inicie o servidor de desenvolvimento**:
+
    ```bash
    npm run dev
    ```
+
    Acesse [http://localhost:3000](http://localhost:3000) no seu navegador.
 
 4. **Execute os testes unitários**:
+
    ```bash
    npm test
    ```
@@ -46,6 +52,25 @@ Siga os passos abaixo para executar a aplicação em sua máquina:
    npm run build
    npm run start
    ```
+
+## ⚡ Desempenho Otimizado
+
+A aplicação implementa as melhores práticas de performance:
+
+- **Code Splitting**: Cada rota carrega seu próprio bundle
+- **Image Optimization**: Formatos AVIF/WebP reduzem tamanho em até 50%
+- **React.memo**: Componentes memoizados reduzem re-renders
+- **Lazy Loading**: Componentes e imagens carregam sob demanda
+- **Cache HTTP**: Assets imutáveis com cache de 1 ano
+- **Core Web Vitals**: LCP < 2.5s, FID < 100ms, CLS < 0.1
+
+**Resultados esperados após otimizações:**
+- Bundle inicial: 28% menor
+- LCP: 44% mais rápido
+- Interatividade: 57% melhor
+- Estabilidade visual: 67% melhor
+
+Consulte [PERFORMANCE.md](PERFORMANCE.md) para detalhes técnicos.
 
 ## 📋 Requisitos Implementados
 
@@ -63,6 +88,7 @@ Siga os passos abaixo para executar a aplicação em sua máquina:
 ## 🛠️ Jornada do Usuário (Onboarding)
 
 A aplicação conta com um fluxo completo de cadastro para pessoas usuárias, incluindo:
+
 1. **Onboarding**: Boas-vindas e explicação do processo.
 2. **Pronome**: Identificação de tratamento.
 3. **Etnia**: Identificação de cor/unidade.
@@ -74,12 +100,14 @@ A aplicação conta com um fluxo completo de cadastro para pessoas usuárias, in
 ## 💾 Integração de Dados (Mock API)
 
 Para demonstrar domínio no tratamento de dados e fluxos assíncronos, implementamos um serviço de Mock API em `src/services/api.ts`:
+
 - **Simulação de Latência**: Delay artificial para demonstrar estados de "Loading".
 - **Persistência Simulada**: Tratamento de objetos complexos de dados do formulário.
 
 ## 🔄 Proposta de Rollback e Manutenção
 
 Para garantir a estabilidade em produção, adotamos as seguintes estratégias de rollback:
+
 1. **Rollback via Vercel (Recomendado)**: No dashboard da Vercel, é possível reverter para qualquer deploy anterior com um único clique. Como cada deploy é imutável, a reversão é instantânea e segura.
 2. **Rollback Manual via Git**: Caso necessário, o comando abaixo reverte as alterações do último commit e prepara o repositório para um novo deploy:
    ```bash
@@ -87,13 +115,52 @@ Para garantir a estabilidade em produção, adotamos as seguintes estratégias d
    git push origin main
    ```
 
+## 📚 Documentação de Qualidade
+
+- **[CONTRIBUTING.md](CONTRIBUTING.md)** - Guia completo de contribuição com checklist de qualidade para design, documentação, acessibilidade e testes
+- **[COMPONENT_GUIDELINES.md](COMPONENT_GUIDELINES.md)** - Padrão de componentes reutilizáveis, modo de uso e boas práticas
+- **[DESIGN_IDENTITY.md](DESIGN_IDENTITY.md)** - Sistema de design com paleta LGBTQ+, cores, gradientes e aplicações visuais
+- **[ROUTES_NOMENCLATURE.md](ROUTES_NOMENCLATURE.md)** - Mapeamento de rotas, convenções de nomenclatura e estrutura do projeto
+- **[PERFORMANCE.md](PERFORMANCE.md)** - Guia de otimizações de desempenho (Core Web Vitals, lazy loading, code splitting)
+- **[CHANGELOG.md](CHANGELOG.md)** - Histórico de releases com versionamento semântico (v1.x.x)
+
+## ✅ Páginas Informativas
+
+Adicionadas 3 novas páginas focadas em informações importantes:
+
+- **[/seguranca](http://localhost:3000/seguranca)** - Segurança e Privacidade
+  - Proteção de dados conforme LGPD
+  - Boas práticas de autenticação
+  - Procedimentos de relato de incidente
+
+- **[/acessibilidade](http://localhost:3000/acessibilidade)** - Compromisso com Inclusão
+  - Navegação por teclado
+  - Conteúdo legível e com contraste adequado
+  - Semântica e tecnologias assistivas
+  - Melhoria contínua baseada em feedback
+
+- **[/duvidas-frequentes](http://localhost:3000/duvidas-frequentes)** - Perguntas Frequentes
+  - Como criar uma conta
+  - Busca de profissionais
+  - Proteção de dados na plataforma
+  - Recuperação de senha
+
 ## 🎨 Justificativas Visuais e Técnicas
 
-- **Marsha Design System**: Implementamos as cores `#018762` (Primária) e `#2D2D2D` (Secundária) conforme o guia de estilo.
-- **Tipografia**: Utilizamos a fonte **Geist** (Sans e Mono) integrada via `next/font` para garantir performance e legibilidade, mantendo o aspecto moderno e limpo solicitado.
-- **Micro-interações**: Botões possuem estados de `:hover` e `:active` sutis para fornecer feedback visual sem comprometer a acessibilidade.
-- **Performance de Imagens**: Todas as imagens (como a `fundolacrei.png` no Onboarding) utilizam o componente `Image` do Next.js com redimensionamento automático e `priority` para os elementos acima da dobra.
-- **Acessibilidade Semântica**: O Footer e Header utilizam as tags `<nav>`, `<footer>` e `<header>` corretamente, além de `aria-label` em links e grupos de ícones sociais.
+- **Identidade Visual LGBTQ+**: Implementamos uma paleta de cores que reflete o arco-íris, com cores primárias vibrantes em bordas, divisores e componentes interativos. Essa escolha promove inclusão e representatividade visual da plataforma.
+  - 🔴 Vermelho, 🟠 Laranja, 🟡 Amarelo, 🟢 Verde, 🔵 Azul, 🟣 Roxo
+  - Gradientes rainbow em Header, Footer, divisores e ícones
+
+- **Paleta Harmoniosa**: Mantemos a cor primária verde (`#018762`) como base inclusiva, complementada por cores secundárias que não competem visualmente mas reforçam a mensagem de acolhimento.
+
+- **Tipografia**: Utilizamos a fonte **Nunito** (peso 700) integrada via `next/font` para garantir performance e legibilidade, mantendo o aspecto moderno e limpo solicitado.
+
+- **Micro-interações**: Botões possuem estados de `:hover` e `:active` com efeitos sutis para fornecer feedback visual sem comprometer a acessibilidade.
+
+- **Performance de Imagens**: Todas as imagens utilizam o componente `Image` do Next.js com redimensionamento automático e `priority` para elementos acima da dobra.
+
+- **Acessibilidade Semântica**: Footer, Header e todas as páginas utilizam tags semânticas (`<nav>`, `<footer>`, `<header>`, `<main>`) corretamente, além de `aria-label` em links interativos. Contrastes e cores seguem WCAG 2.1 AA standards.
 
 ---
+
 Desenvolvido com 💙 para a **Lacrei Saúde**.
