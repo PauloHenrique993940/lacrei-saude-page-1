@@ -25,7 +25,7 @@ Aplicacao desenvolvida como parte do desafio tecnico para voluntariado na **Lacr
 
 A **Lacrei Saude** conecta pessoas da comunidade LGBTQIAPN+ com profissionais de saude comprometidos em oferecer um atendimento seguro, inclusivo e respeitoso. Este projeto representa a interface front-end focada na jornada de onboarding e informacional da plataforma.
 
-- **Deploy**: [https://lacrei-saude-desafio.vercel.app](https://lacrei-saude-desafio.vercel.app)
+- **Deploy**: [https://lacrei-saude-page-1.vercel.app/](https://lacrei-saude-page-1.vercel.app/)
 - **Repositorio**: [https://github.com/PauloHenrique993940/lacrei-saude-page-1](https://github.com/PauloHenrique993940/lacrei-saude-page-1)
 
 ---
