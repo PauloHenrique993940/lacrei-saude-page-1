@@ -469,7 +469,7 @@ const AudienceImage = styled.div<{ $reverse?: boolean }>`
     position: relative;
     flex: 1;
     height: 360px;
-    background: #018762;
+    background: #015786;
     clip-path: ${(props) =>
         props.$reverse ? 'circle(85% at 91% 46%)' : 'circle(85.2% at 11% 49%)'};
     border-radius: ${(props) =>
