@@ -152,12 +152,19 @@ Score Lighthouse: >85%
 
 Os arquivos de apoio dos testes de desempenho e validacoes visuais estao disponiveis em `src/app/printDoc/`:
 
-- `doload.pdf`
-- `download-1.pdf`
-- `desempenho.png`
-- `acessibilidade.png`
-- `pratica.png`
-- `seo.png`
+- PDFs:
+- [doload.pdf](src/app/printDoc/doload.pdf)
+- [download-1.pdf](src/app/printDoc/download-1.pdf)
+
+- Capturas de tela:
+
+![Desempenho](src/app/printDoc/desempenho.png)
+
+![Acessibilidade](src/app/printDoc/acessibilidade.png)
+
+![Boas praticas](src/app/printDoc/pratica.png)
+
+![SEO](src/app/printDoc/seo.png)
 
 ---
 
