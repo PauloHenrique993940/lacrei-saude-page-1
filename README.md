@@ -27,6 +27,10 @@ A **Lacrei Saude** conecta pessoas da comunidade LGBTQIAPN+ com profissionais de
 
 - **Deploy**: [https://lacrei-saude-page-1.vercel.app/](https://lacrei-saude-page-1.vercel.app/)
 - **Repositorio**: [https://github.com/PauloHenrique993940/lacrei-saude-page-1](https://github.com/PauloHenrique993940/lacrei-saude-page-1)
+- **Documentacao complementar**:
+   - `ACCESSIBILITY.md` com criterios, auditorias e evidencias de acessibilidade.
+   - `PERFORMANCE.md` com resultados, estrategia e artefatos de Lighthouse.
+   - `MARSHA_ADHERENCE.md` com o racional de aderencia ao guia visual Marsha.
 
 ---
 
@@ -112,11 +116,15 @@ Fluxo gamificado e semantico composto por 7 etapas:
 
 ## Identidade Visual
 
-Baseada no **Design System Marsha**, a interface utiliza uma paleta que celebra a diversidade:
+O projeto utiliza o **Guia de Estilo Marsha P. Johnson** como referencia visual para tokens e diretrizes de interface. A entrega prioriza **aderencia de linguagem visual e experiencia** em vez de uma reproducao 1:1 de um catalogo oficial de componentes.
+
+Principais pontos de aderencia:
 
 - **Cor Primaria**: Verde Lacrei (`#018762`) para acoes e acessibilidade.
 - **Gradiente Rainbow**: Implementado em bordas e divisores para reforcar a identidade LGBTQ+.
 - **Tipografia**: Nunito (peso 700) para maxima legibilidade.
+- **Tokens centralizados**: Cores, espacamentos, raios e estados ficam concentrados em `src/styles/theme.ts`.
+- **Documentacao detalhada**: O mapeamento entre guia visual e implementacao esta em `MARSHA_ADHERENCE.md`.
 
 ---
 
@@ -131,22 +139,28 @@ Baseada no **Design System Marsha**, a interface utiliza uma paleta que celebra 
 
 ## Acessibilidade e Inclusao
 
-Score Lighthouse: 100/100
+Score Lighthouse documentado: 100/100
 
 - **Semantica HTML5**: Uso rigoroso de tags como `<main>`, `<nav>` e `<footer>`.
-- **WAI-ARIA**: Atributos `aria-label`, `aria-live` e `roles` em componentes interativos.
+- **WAI-ARIA**: Atributos `aria-label`, `aria-live` e `roles` em componentes interativos e no stepper de cadastro.
 - **Contraste**: Validado conforme WCAG 2.1 AA/AAA.
-- **Navegacao**: 100% acessivel via teclado e testada com leitores de tela (NVDA/VoiceOver).
+- **Navegacao**: Fluxos principais preparados para navegacao via teclado, foco visivel e feedback assistivo.
+
+Documentacao complementar:
+
+- `ACCESSIBILITY.md` detalha criterios auditados, matriz de validacao e artefatos.
+- `src/app/printDoc/` concentra as capturas e PDFs utilizados como evidencia.
 
 ---
 
 ## Performance e Otimizacao
 
-Score Lighthouse: >85%
+Score Lighthouse documentado: 88
 
 - **Imagens**: Uso de `next/image` com formatos AVIF/WebP e `sizes` responsivos.
 - **Fonts**: Carregamento otimizado via `next/font/google` para evitar CLS.
 - **Bundle**: Code-splitting automatico por rota.
+- **Deploy em producao**: Auditorias documentadas sobre a versao hospedada na Vercel.
 
 ### Evidencias de teste
 
@@ -184,6 +198,7 @@ npm test
 ## Deploy e Manutencao
 
 - **Plataforma**: Vercel para deploys continuos e imutaveis.
+- **URL funcional**: [https://lacrei-saude-page-1.vercel.app/](https://lacrei-saude-page-1.vercel.app/)
 - **Rollback**: Capacidade de reversao instantanea via dashboard Vercel ou comando git:
 
   ```bash

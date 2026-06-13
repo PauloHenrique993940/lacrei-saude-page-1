@@ -82,8 +82,21 @@ const Circle = styled.div<{ $active: boolean; $completed: boolean }>`
 `;
 
 export const Stepper = ({ currentStep, steps }: StepperProps) => {
+    const currentLabel = steps[currentStep - 1];
+
     return (
-        <Container aria-label="Progresso do cadastro">
+        <Container
+            aria-label="Progresso do cadastro"
+            aria-valuemax={steps.length}
+            aria-valuemin={1}
+            aria-valuenow={currentStep}
+            aria-valuetext={
+                currentLabel
+                    ? `Etapa ${currentStep} de ${steps.length}: ${currentLabel}`
+                    : `Etapa ${currentStep} de ${steps.length}`
+            }
+            role="progressbar"
+        >
             <StepWrapper>
                 {steps.map((step, index) => {
                     const stepNumber = index + 1;

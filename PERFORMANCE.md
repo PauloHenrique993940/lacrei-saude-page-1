@@ -13,6 +13,15 @@ Abaixo estão os resultados obtidos em ambiente de produção, demonstrando a ef
 | Cumulative Layout Shift (CLS)  | -         | 0.01          |
 | Speed Index                    | -         | 0.9s          |
 
+**Contexto da rodada documentada**
+
+- Ambiente auditado: Produção (Vercel)
+- Data de referência: Junho de 2026
+- Evidências visuais: `src/app/printDoc/desempenho.png`, `src/app/printDoc/pratica.png`, `src/app/printDoc/seo.png`
+- Exportações auxiliares: `src/app/printDoc/doload.pdf` e `src/app/printDoc/download-1.pdf`
+
+As capturas registram a rodada usada nesta entrega. Reexecuções futuras podem apresentar pequenas variações sem alterar a estratégia de otimização adotada.
+
 ---
 
 ## 🚀 Melhorias de Desempenho Implementadas

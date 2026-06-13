@@ -124,6 +124,20 @@ const RequestGrid = styled.div`
     }
 `;
 
+const RequestFieldset = styled.fieldset`
+    border: 0;
+    padding: 0;
+    margin: 0;
+    min-width: 0;
+`;
+
+const RequestLegend = styled.legend`
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #1f2d44;
+    margin-bottom: 1rem;
+`;
+
 const RadioGrid = styled.div`
     display: grid;
     grid-template-columns: 1fr;
@@ -187,6 +201,16 @@ export default function DireitosTitular() {
         'Outro direito',
     ];
 
+    const requestOptions = requests.map((request) => ({
+        id: `solicitacao-${request
+            .normalize('NFD')
+            .replace(/[\u0300-\u036f]/g, '')
+            .replace(/[^a-zA-Z0-9]+/g, '-')
+            .replace(/^-|-$/g, '')
+            .toLowerCase()}`,
+        label: request,
+    }));
+
     return (
         <Main>
             <Header />
@@ -220,13 +244,18 @@ export default function DireitosTitular() {
                     <h2>Solicitação de direitos da pessoa titular</h2>
                     <form>
                         <FormGroup>
-                            <label>Nome</label>
-                            <input type="text" placeholder="Digite seu nome" />
+                            <label htmlFor="titular-nome">Nome</label>
+                            <input
+                                id="titular-nome"
+                                type="text"
+                                placeholder="Digite seu nome"
+                            />
                         </FormGroup>
 
                         <FormGroup>
-                            <label>E-mail</label>
+                            <label htmlFor="titular-email">E-mail</label>
                             <input
+                                id="titular-email"
                                 type="email"
                                 placeholder="Digite seu e-mail"
                             />
@@ -246,21 +275,28 @@ export default function DireitosTitular() {
                         </FormGroup>
 
                         <RequestGrid>
-                            <h3>Selecione a solicitação desejada:</h3>
-                            <RadioGrid>
-                                {requests.map((req, idx) => (
-                                    <RadioItem key={idx}>
-                                        <label>
+                            <RequestFieldset>
+                                <RequestLegend>
+                                    Selecione a solicitação desejada:
+                                </RequestLegend>
+                                <RadioGrid>
+                                    {requestOptions.map((requestOption) => (
+                                        <RadioItem
+                                            key={requestOption.id}
+                                            htmlFor={requestOption.id}
+                                        >
                                             <input
+                                                aria-label={requestOption.label}
+                                                id={requestOption.id}
                                                 type="radio"
                                                 name="solicitacao"
-                                                value={req}
+                                                value={requestOption.label}
                                             />
-                                            <span>{req}</span>
-                                        </label>
-                                    </RadioItem>
-                                ))}
-                            </RadioGrid>
+                                            <span>{requestOption.label}</span>
+                                        </RadioItem>
+                                    ))}
+                                </RadioGrid>
+                            </RequestFieldset>
                         </RequestGrid>
 
                         <SubmitButton type="button">

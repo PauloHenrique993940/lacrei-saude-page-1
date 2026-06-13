@@ -2,6 +2,8 @@
 
 A acessibilidade é o pilar central da **Lacrei Saúde**. Este documento apresenta as evidências objetivas das validações realizadas para garantir que a plataforma seja inclusiva para todas as pessoas.
 
+Os artefatos visuais desta entrega estão concentrados em `src/app/printDoc/`, com capturas da auditoria automatizada e PDFs exportados da rodada documentada.
+
 ---
 
 ## ♿ Pontuação Lighthouse
@@ -13,6 +15,12 @@ A aplicação atingiu a pontuação máxima em acessibilidade em todas as págin
 - **Score:** 100/100
 - **Data da última auditoria:** Junho de 2026
 - **Ambiente:** Produção (Vercel)
+
+**Artefatos relacionados:**
+
+- `src/app/printDoc/acessibilidade.png`
+- `src/app/printDoc/doload.pdf`
+- `src/app/printDoc/download-1.pdf`
 
 ---
 
@@ -31,18 +39,27 @@ Utilizamos a paleta de cores do Design System Marsha, validando o contraste entr
 
 ## 🔊 Validação com Leitores de Tela
 
-Foram realizados testes manuais utilizando os seguintes softwares:
+Esta entrega documenta a validação manual dos fluxos prioritários com foco em leitura de conteúdo, formulário e feedback de interface.
+
+Tecnologias assistivas consideradas na validação:
 
 - **NVDA** (Windows/Chrome)
 - **VoiceOver** (macOS/Safari)
 - **TalkBack** (Android/Chrome)
 
-### Resultados da Jornada de Onboarding:
+### Fluxos auditados
 
-1. **Anúncios de Troca de Rota**: Utilizamos o sistema de roteamento do Next.js que garante o foco no topo da página a cada navegação.
+1. **Home (`/`)**: landmarks semânticos, imagens com texto alternativo e links descritivos.
+2. **Entrar (`/entrar`)**: rótulos, feedback com `role="alert"` e `aria-live`, ordem de tabulação e estados de envio.
+3. **Esqueci minha senha (`/esqueci-senha`)**: mensagens de sucesso/erro anunciadas de forma assistiva.
+4. **Cadastro / onboarding**: seleção por teclado, stepper com progresso assistivo e navegação linear.
+
+### Resultados observados
+
+1. **Estrutura semântica consistente**: Header, navegação, conteúdo principal e rodapé estão separados por landmarks semânticos.
 2. **Campos de Formulário**: Todos os inputs e radio buttons possuem labels associados (`htmlFor`/`id`) ou `aria-label`.
 3. **Feedback de Erro**: Mensagens de validação são anunciadas imediatamente via `aria-live="polite"`.
-4. **Imagens**: Todas as imagens decorativas possuem `alt=""` e imagens informativas possuem descrições detalhadas.
+4. **Imagens**: Imagens informativas possuem descrições textuais e os links importantes contam com nomes acessíveis.
 
 ---
 
@@ -50,9 +67,9 @@ Foram realizados testes manuais utilizando os seguintes softwares:
 
 A aplicação é 100% navegável via teclado (`Tab`, `Shift+Tab`, `Enter`, `Space`):
 
-- **Focus Trap**: Implementado em modais e fluxos críticos para evitar que o foco "fuja" da área de interação.
 - **Outline Visível**: Mantivemos o `outline` nativo ou customizado com alto contraste para indicar claramente onde o foco está.
-- **Skip Links**: Implementado link oculto no topo para pular diretamente para o conteúdo principal (`main`).
+- **Seleção de Opções**: Radio groups e botões principais respondem por teclado com foco visual claro.
+- **Progresso Assistivo**: O stepper do cadastro informa etapa atual e total por meio de atributos WAI-ARIA.
 
 ---
 
@@ -66,6 +83,15 @@ A aplicação é 100% navegável via teclado (`Tab`, `Shift+Tab`, `Enter`, `Spac
   - `role="contentinfo"` (Footer)
   - `role="progressbar"` (Stepper de Onboarding)
 
+## ✅ Matriz resumida de validação
+
+| Rota / fluxo | Itens auditados | Resultado |
+| :----------- | :-------------- | :-------- |
+| Home (`/`) | Estrutura semântica, links, imagens, contraste | ✅ Conforme |
+| Entrar (`/entrar`) | Labels, feedback de erro, foco, teclado | ✅ Conforme |
+| Esqueci senha (`/esqueci-senha`) | Estados de erro/sucesso anunciados | ✅ Conforme |
+| Cadastro | Stepper, radio groups, ordem de interação | ✅ Conforme |
+
 ---
 
 ## 🔍 Ferramentas de Auditoria Utilizadas
@@ -74,6 +100,7 @@ A aplicação é 100% navegável via teclado (`Tab`, `Shift+Tab`, `Enter`, `Spac
 2. **Axe DevTools** (Auditoria de profundidade em componentes)
 3. **WAVE (Web Accessibility Evaluation Tool)** (Validação de estrutura)
 4. **Color Contrast Analyzer** (Validação de legibilidade)
+5. **Inspeção manual com teclado** (Tab, Shift+Tab, Enter e Space)
 
 ---
 
