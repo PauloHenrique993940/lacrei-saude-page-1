@@ -1,10 +1,13 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
 import { Header } from '../../components/Header';
 import { Footer } from '../../components/Footer';
+import { useAuth } from '../../providers/AuthContext';
+
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 const Main = styled.main`
     min-height: 100vh;
@@ -73,13 +76,71 @@ const Success = styled.p`
     margin: 0;
 `;
 
-export default function EsqueciSenhaPage() {
-    const [email, setEmail] = useState('');
-    const [sent, setSent] = useState(false);
+const Error = styled.p`
+    color: #b91c1c;
+    margin: 0;
+`;
 
-    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+const StatusCard = styled.div<{ $tone: 'error' | 'success' }>`
+    border-radius: 12px;
+    padding: 1rem 1.1rem;
+    margin-top: 1rem;
+    border: 1px solid
+        ${(props) => (props.$tone === 'error' ? '#f3b2b2' : '#8fd3c3')};
+    background: ${(props) => (props.$tone === 'error' ? '#fff7f7' : '#f1fcf8')};
+
+    strong {
+        display: block;
+        color: ${(props) => props.theme.colors.secondary};
+        margin-bottom: 0.35rem;
+    }
+`;
+
+export default function EsqueciSenhaPage() {
+    const { requestPasswordReset } = useAuth();
+    const formRef = useRef<HTMLFormElement | null>(null);
+    const [email, setEmail] = useState('');
+    const [status, setStatus] = useState<
+        'idle' | 'invalid_email' | 'not_found' | 'sent'
+    >('idle');
+    const [message, setMessage] = useState('');
+    const [isSubmitting, setIsSubmitting] = useState(false);
+
+    useEffect(() => {
+        if (formRef.current) {
+            formRef.current.noValidate = true;
+        }
+    }, []);
+
+    const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        setSent(Boolean(email));
+        const trimmedEmail = email.trim();
+
+        setStatus('idle');
+        setMessage('');
+
+        if (!EMAIL_REGEX.test(trimmedEmail)) {
+            setStatus('invalid_email');
+            setMessage(
+                'Digite um e-mail em formato valido para receber as instrucoes.'
+            );
+            return;
+        }
+
+        setIsSubmitting(true);
+        const result = await requestPasswordReset(trimmedEmail);
+        setIsSubmitting(false);
+
+        if (result === 'not_found') {
+            setStatus('not_found');
+            setMessage('Nao encontramos uma conta cadastrada com este e-mail.');
+            return;
+        }
+
+        setStatus('sent');
+        setMessage(
+            'Se este e-mail estiver cadastrado, voce recebera as instrucoes em instantes.'
+        );
     };
 
     return (
@@ -93,7 +154,7 @@ export default function EsqueciSenhaPage() {
                         de senha.
                     </p>
 
-                    <Form onSubmit={handleSubmit}>
+                    <Form ref={formRef} onSubmit={handleSubmit}>
                         <input
                             type="email"
                             value={email}
@@ -101,12 +162,38 @@ export default function EsqueciSenhaPage() {
                             placeholder="voce@email.com"
                             required
                         />
-                        <SubmitButton type="submit">Enviar link</SubmitButton>
-                        {sent && (
-                            <Success>
-                                Se este e-mail estiver cadastrado, voce recebera
-                                as instrucoes em instantes.
-                            </Success>
+                        <SubmitButton type="submit" disabled={isSubmitting}>
+                            {isSubmitting ? 'Enviando...' : 'Enviar link'}
+                        </SubmitButton>
+                        {status === 'invalid_email' && (
+                            <StatusCard
+                                $tone="error"
+                                role="alert"
+                                aria-live="polite"
+                            >
+                                <strong>E-mail fora do formato esperado</strong>
+                                <Error>{message}</Error>
+                            </StatusCard>
+                        )}
+                        {status === 'not_found' && (
+                            <StatusCard
+                                $tone="error"
+                                role="alert"
+                                aria-live="polite"
+                            >
+                                <strong>Conta nao cadastrada</strong>
+                                <Error>{message}</Error>
+                            </StatusCard>
+                        )}
+                        {status === 'sent' && (
+                            <StatusCard
+                                $tone="success"
+                                role="status"
+                                aria-live="polite"
+                            >
+                                <strong>Confirmar envio para e-mail</strong>
+                                <Success>{message}</Success>
+                            </StatusCard>
                         )}
                     </Form>
 

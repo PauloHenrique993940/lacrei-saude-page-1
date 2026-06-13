@@ -25,6 +25,10 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "images.unsplash.com",
       },
+      {
+        protocol: "https",
+        hostname: "paciente.lacreisaude.com.br",
+      },
     ],
     unoptimized: false,
     minimumCacheTTL: 31536000,

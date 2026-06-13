@@ -239,25 +239,41 @@ const IconBubble = styled.div`
 
 const AboutSection = styled.section`
     width: 100%;
-    max-width: 1216px;
-    margin: 4rem auto;
-    display: flex;
+    max-width: 1120px;
+    margin: 4.5rem auto 5.5rem;
+    display: grid;
+    grid-template-columns: 663px minmax(360px, 470px);
     align-items: center;
+    justify-content: center;
     position: relative;
     padding: 0 2rem;
 
+    @media (max-width: ${(props) => props.theme.breakpoints.desktop}) {
+        max-width: 100%;
+        grid-template-columns: minmax(0, 1fr) minmax(320px, 420px);
+        gap: 0;
+    }
+
     @media (max-width: ${(props) => props.theme.breakpoints.tablet}) {
+        display: flex;
         flex-direction: column;
         padding: 0 1rem;
     }
 `;
 
 const AboutImageContainer = styled.div`
-    flex: 1.2;
-    border-radius: 24px;
+    width: 663px;
+    max-width: 100%;
+    border-radius: 10px;
     overflow: hidden;
-    height: 520px;
+    height: 461.59px;
     position: relative;
+    justify-self: center;
+
+    @media (max-width: ${(props) => props.theme.breakpoints.desktop}) {
+        width: 100%;
+        height: 420px;
+    }
 
     @media (max-width: ${(props) => props.theme.breakpoints.tablet}) {
         width: 100%;
@@ -268,15 +284,22 @@ const AboutImageContainer = styled.div`
 `;
 
 const AboutCard = styled.article`
-    flex: 1;
+    width: min(100%, 470px);
     background: white;
-    padding: 3.5rem;
-    border-radius: 16px;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
-    border: 1px solid #edf2f7;
-    margin-left: -5rem;
+    padding: 2.5rem 2.05rem 1.9rem;
+    border-radius: 10px;
+    box-shadow: 0 10px 28px rgba(15, 23, 42, 0.08);
+    border: 1px solid #d6d9de;
+    margin-left: -7rem;
     z-index: 2;
     position: relative;
+    align-self: center;
+    justify-self: start;
+
+    @media (max-width: ${(props) => props.theme.breakpoints.desktop}) {
+        width: min(100%, 420px);
+        margin-left: -4rem;
+    }
 
     @media (max-width: ${(props) => props.theme.breakpoints.tablet}) {
         margin-left: 0;
@@ -285,21 +308,23 @@ const AboutCard = styled.article`
     }
 
     h2 {
-        font-size: 2.8rem;
+        max-width: 320px;
+        font-size: 3.2rem;
         font-weight: 700;
         color: ${(props) => props.theme.colors.secondary};
         margin-bottom: 1rem;
+        line-height: 1.08;
     }
 
     .divider {
-        width: 140px;
+        width: 124px;
         height: 2px;
         background-color: ${(props) => props.theme.colors.primary};
         margin-bottom: 2rem;
     }
 
     p {
-        font-size: 1.2rem;
+        font-size: 1rem;
         line-height: 1.6;
         color: ${(props) => props.theme.colors.text.default};
         margin-bottom: 1.5rem;
@@ -307,6 +332,14 @@ const AboutCard = styled.article`
         &:last-of-type {
             margin-bottom: 2rem;
         }
+    }
+
+    a {
+        display: inline-flex;
+    }
+
+    button {
+        min-width: 188px;
     }
 `;
 
@@ -585,12 +618,12 @@ export default function Home() {
                                 inclusivas.
                             </p>
                             <ButtonGroup>
-                                <Link href="/entrar">
-                                    <Button>Para pacientes</Button>
-                                </Link>
-                                <Link href="/profissional">
-                                    <Button>Para profissionais</Button>
-                                </Link>
+                                <Button as={Link} href="/entrar">
+                                    Para pacientes
+                                </Button>
+                                <Button as={Link} href="/profissional">
+                                    Para profissionais
+                                </Button>
                             </ButtonGroup>
                         </div>
                     </HeroText>
@@ -691,14 +724,14 @@ export default function Home() {
                         Surgimos da esperança de ter um atendimento clínico
                         qualificado, seguro e empático para todas as pessoas.
                     </p>
-                    <Link href="/quem-somos">
-                        <Button
-                            $variant="outline"
-                            style={{ padding: '0.875rem 3rem' }}
-                        >
-                            Conhecer
-                        </Button>
-                    </Link>
+                    <Button
+                        as={Link}
+                        href="/quem-somos"
+                        $variant="outline"
+                        style={{ padding: '0.875rem 3rem' }}
+                    >
+                        Conhecer
+                    </Button>
                 </AboutCard>
             </AboutSection>
 
@@ -817,9 +850,9 @@ export default function Home() {
                                 Conecte-se a profissionais da saúde que estudam
                                 as necessidades da comunidade LGBTQIAPN+.
                             </p>
-                            <Link href="/entrar">
-                                <Button>Buscar atendimento</Button>
-                            </Link>
+                            <Button as={Link} href="/entrar">
+                                Buscar atendimento
+                            </Button>
                         </AudienceContent>
                     </AudienceCard>
 
@@ -840,9 +873,9 @@ export default function Home() {
                                 priorizam o bem-estar físico e mental de pessoas
                                 LGBTQIAPN+.
                             </p>
-                            <Link href="/profissional">
-                                <Button>Oferecer atendimento</Button>
-                            </Link>
+                            <Button as={Link} href="/profissional">
+                                Oferecer atendimento
+                            </Button>
                         </AudienceContent>
                     </AudienceCard>
                 </div>
@@ -870,11 +903,13 @@ export default function Home() {
                             Entenda como validamos pacientes e profissionais da
                             saúde.
                         </p>
-                        <Link href="/seguranca">
-                            <FinalCardButton $variant="outline">
-                                Entenda
-                            </FinalCardButton>
-                        </Link>
+                        <FinalCardButton
+                            as={Link}
+                            href="/seguranca"
+                            $variant="outline"
+                        >
+                            Entenda
+                        </FinalCardButton>
                     </FinalCard>
 
                     <FinalCard>
@@ -904,11 +939,13 @@ export default function Home() {
                             Conheça nossos recursos que tornam a plataforma
                             Lacrei Saúde acessível.
                         </p>
-                        <Link href="/acessibilidade">
-                            <FinalCardButton $variant="outline">
-                                Conheça
-                            </FinalCardButton>
-                        </Link>
+                        <FinalCardButton
+                            as={Link}
+                            href="/acessibilidade"
+                            $variant="outline"
+                        >
+                            Conheça
+                        </FinalCardButton>
                     </FinalCard>
 
                     <FinalCard>
@@ -931,11 +968,13 @@ export default function Home() {
                             Acesse nossa lista de perguntas frequentes e tire
                             suas dúvidas.
                         </p>
-                        <Link href="/duvidas-frequentes">
-                            <FinalCardButton $variant="outline">
-                                Acesse
-                            </FinalCardButton>
-                        </Link>
+                        <FinalCardButton
+                            as={Link}
+                            href="/duvidas-frequentes"
+                            $variant="outline"
+                        >
+                            Acesse
+                        </FinalCardButton>
                     </FinalCard>
                 </FinalGrid>
             </FinalSection>

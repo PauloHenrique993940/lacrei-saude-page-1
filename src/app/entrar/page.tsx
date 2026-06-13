@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
@@ -8,7 +8,11 @@ import { Header } from '../../components/Header';
 import { Footer } from '../../components/Footer';
 import { useAuth } from '../../providers/AuthContext';
 import Image from 'next/image';
-import profissionaisSaude from '../assets/profissionaisSaude.avif';
+
+const LOGIN_ILLUSTRATION_URL =
+    'https://paciente.lacreisaude.com.br/_next/static/media/illustration-login.17db3f05.svg';
+
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 const Main = styled.main`
     min-height: 100vh;
@@ -116,6 +120,37 @@ const Message = styled.p`
     min-height: 1.2rem;
 `;
 
+const StatusCard = styled.div<{ $tone: 'error' | 'success' | 'neutral' }>`
+    border-radius: 12px;
+    padding: 1rem 1.1rem;
+    margin-bottom: 1.25rem;
+    border: 1px solid
+        ${(props) =>
+            props.$tone === 'error'
+                ? '#f3b2b2'
+                : props.$tone === 'success'
+                  ? '#8fd3c3'
+                  : props.theme.colors.border};
+    background: ${(props) =>
+        props.$tone === 'error'
+            ? '#fff7f7'
+            : props.$tone === 'success'
+              ? '#f1fcf8'
+              : '#f8fafc'};
+
+    strong {
+        display: block;
+        color: ${(props) => props.theme.colors.secondary};
+        margin-bottom: 0.35rem;
+    }
+
+    span {
+        color: ${(props) => props.theme.colors.text};
+        font-size: 0.95rem;
+        line-height: 1.45;
+    }
+`;
+
 const SideCard = styled.div`
     min-height: 520px;
     border-radius: 16px;
@@ -125,37 +160,67 @@ const SideCard = styled.div`
 
     @media (max-width: 900px) {
         min-height: 300px;
+        order: -1;
     }
 `;
 
 export default function EntrarPage() {
     const { login } = useAuth();
     const router = useRouter();
+    const formRef = useRef<HTMLFormElement | null>(null);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
+    const [statusTitle, setStatusTitle] = useState('');
     const [isSubmitting, setIsSubmitting] = useState(false);
+
+    useEffect(() => {
+        if (formRef.current) {
+            formRef.current.noValidate = true;
+        }
+    }, []);
 
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        setError('');
 
-        if (!email || !password) {
+        const normalizedEmail = email.trim();
+        const normalizedPassword = password.trim();
+
+        setError('');
+        setStatusTitle('');
+
+        if (!normalizedEmail || !normalizedPassword) {
+            setStatusTitle('Dados obrigatorios');
             setError('Por favor, preencha todos os campos.');
+            return;
+        }
+
+        if (!EMAIL_REGEX.test(normalizedEmail)) {
+            setStatusTitle('E-mail com formato invalido');
+            setError('Digite um e-mail valido para continuar.');
             return;
         }
 
         setIsSubmitting(true);
 
-        const success = await login(email, password);
+        try {
+            const isAuthenticated = await login(
+                normalizedEmail,
+                normalizedPassword
+            );
 
-        if (!success) {
-            setError('E-mail ou senha incorretos. Verifique seus dados e tente novamente.');
+            if (!isAuthenticated) {
+                setStatusTitle('E-mail ou senha invalidos');
+                setError(
+                    'E-mail ou senha incorretos. Verifique seus dados e tente novamente.'
+                );
+                return;
+            }
+
+            router.push('/');
+        } finally {
             setIsSubmitting(false);
-            return;
         }
-
-        router.push('/');
     };
 
     return (
@@ -166,7 +231,20 @@ export default function EntrarPage() {
                     <h1>Boas-vindas à Lacrei Saúde</h1>
                     <p>Entre ou crie sua conta Lacrei Saúde.</p>
 
-                    <Form onSubmit={handleSubmit}>
+                    {(statusTitle || error) && (
+                        <StatusCard
+                            $tone="error"
+                            role="alert"
+                            aria-live="polite"
+                        >
+                            <strong>
+                                {statusTitle || 'Nao foi possivel entrar'}
+                            </strong>
+                            <span>{error}</span>
+                        </StatusCard>
+                    )}
+
+                    <Form ref={formRef} onSubmit={handleSubmit}>
                         <Field>
                             E-mail
                             <input
@@ -211,7 +289,7 @@ export default function EntrarPage() {
 
                 <SideCard aria-hidden="true">
                     <Image
-                        src={profissionaisSaude}
+                        src={LOGIN_ILLUSTRATION_URL}
                         alt="Profissionais de saúde em atendimento"
                         fill
                         style={{ objectFit: 'cover' }}

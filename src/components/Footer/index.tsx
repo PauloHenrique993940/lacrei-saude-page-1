@@ -270,9 +270,9 @@ export const Footer = memo(() => {
 
                     <LinkColumn>
                         <h4>Saúde</h4>
-                        <ExternalFooterLink href="https://paciente.lacreisaude.com.br">
+                        <InternalFooterLink href="/entrar">
                             Buscar atendimento
-                        </ExternalFooterLink>
+                        </InternalFooterLink>
                         <ExternalFooterLink href="https://profissional.lacreisaude.com.br">
                             Oferecer atendimento
                         </ExternalFooterLink>
