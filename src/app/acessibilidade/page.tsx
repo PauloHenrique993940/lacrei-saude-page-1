@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import { Header } from '../../components/Header';
 import { Footer } from '../../components/Footer';
 import Image from 'next/image';
-import Link from 'next/link';
 import FundoLacrei from '../assets/fundolacrei.png'; // Reusing matching assets if possible
 import ProfissionaisSaude from '../assets/profissionaisSaude.avif';
 

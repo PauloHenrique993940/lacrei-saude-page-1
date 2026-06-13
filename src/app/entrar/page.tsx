@@ -129,14 +129,14 @@ const StatusCard = styled.div<{ $tone: 'error' | 'success' | 'neutral' }>`
             props.$tone === 'error'
                 ? '#f3b2b2'
                 : props.$tone === 'success'
-                  ? '#8fd3c3'
-                  : props.theme.colors.border};
+                    ? '#8fd3c3'
+                    : props.theme.colors.border};
     background: ${(props) =>
         props.$tone === 'error'
             ? '#fff7f7'
             : props.$tone === 'success'
-              ? '#f1fcf8'
-              : '#f8fafc'};
+                ? '#f1fcf8'
+                : '#f8fafc'};
 
     strong {
         display: block;

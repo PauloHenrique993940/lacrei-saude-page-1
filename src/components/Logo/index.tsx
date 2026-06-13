@@ -22,10 +22,7 @@ const LogoContainer = styled(Link)`
     }
 `;
 
-export const Logo = ({
-    variant = 'horizontal',
-    showText = true,
-}: LogoProps) => {
+export const Logo = ({ }: LogoProps) => {
     return (
         <LogoContainer
             href="/"
