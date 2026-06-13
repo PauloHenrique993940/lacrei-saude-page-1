@@ -223,13 +223,13 @@ const IconBubble = styled.div`
     width: 100px;
     height: 100px;
     border-radius: 50%;
-    background: #015786;
-    color: #ffffff;
+    background: transparent;
+    color: #015786;
+    border: 5px solid #015786;
     margin: 0 auto;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 6px 16px rgba(1, 87, 134, 0.25);
 
     svg {
         width: 48px;
@@ -546,8 +546,8 @@ const FinalCard = styled.article`
 
     h3 {
         margin-top: 0.8rem;
-        color: ${(props) => props.theme.colors.primary};
-        font-size: 2.1rem;
+        color: #015786;
+        font-size: 18px;
     }
 
     p {
@@ -555,7 +555,7 @@ const FinalCard = styled.article`
         color: ${(props) => props.theme.colors.text};
         min-height: 66px;
         line-height: 1.45;
-        font-size: 1.3rem;
+        font-size: 16px;
     }
 
     a {
@@ -565,25 +565,27 @@ const FinalCard = styled.article`
 `;
 
 const FinalCardButton = styled(Button)`
-    min-width: 224px;
-    min-height: 48px;
-    padding: 0.875rem 2rem;
-    border-radius: 10px;
-    background-color: #ffffff;
-    color: #018762;
-    border-color: #018762;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
-
-    &:hover {
+    && {
+        min-width: 224px;
+        min-height: 48px;
+        padding: 0.875rem 2rem;
+        border-radius: 10px;
         background-color: #ffffff;
         color: #018762;
         border-color: #018762;
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
     }
 
-    &:active {
-        background-color: #ffffff;
-        color: #018762;
+    &&:hover {
+        background-color: #018762;
+        color: #ffffff;
+        border-color: #018762;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+    }
+
+    &&:active {
+        background-color: #01664d;
+        color: #ffffff;
         border-color: #018762;
         transform: none;
     }
@@ -883,6 +885,7 @@ export default function Home() {
 
             <FinalSection>
                 <h2>Nos preocupamos com cada detalhe de sua experiência</h2>
+                <Divider />
 
                 <FinalGrid>
                     <FinalCard>
@@ -891,11 +894,12 @@ export default function Home() {
                                 viewBox="0 0 24 24"
                                 fill="none"
                                 stroke="currentColor"
-                                strokeWidth="2"
+                                strokeWidth="2.2"
                                 strokeLinecap="round"
                                 strokeLinejoin="round"
                             >
-                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z" />
+                                <path d="M12 21s7-3.6 7-9V6l-7-3-7 3v6c0 5.4 7 9 7 9Z" />
+                                <path d="m9.5 12.2 1.7 1.7 3.6-3.8" />
                             </svg>
                         </IconBubble>
                         <h3>Segurança</h3>
@@ -918,20 +922,15 @@ export default function Home() {
                                 viewBox="0 0 24 24"
                                 fill="none"
                                 stroke="currentColor"
-                                strokeWidth="2"
+                                strokeWidth="2.2"
                                 strokeLinecap="round"
                                 strokeLinejoin="round"
                             >
-                                <path d="M10 14h4" />
-                                <path d="M12 10v8" />
-                                <path d="m8 10 4-4 4 4" />
-                                <rect
-                                    width="20"
-                                    height="12"
-                                    x="2"
-                                    y="4"
-                                    rx="2"
-                                />
+                                <path d="M8 12V7.5a1.5 1.5 0 0 1 3 0V11" />
+                                <path d="M11 11V6.5a1.5 1.5 0 0 1 3 0V11" />
+                                <path d="M14 11V8a1.5 1.5 0 0 1 3 0v4" />
+                                <path d="M8 11V9.5a1.5 1.5 0 0 0-3 0V15" />
+                                <path d="M5 15H4a1.5 1.5 0 0 0 0 3h2l2.4 2.4a2 2 0 0 0 1.4.6H15a4 4 0 0 0 4-4v-2.5a1.5 1.5 0 0 0-3 0V15" />
                             </svg>
                         </IconBubble>
                         <h3>Acessibilidade</h3>
@@ -954,13 +953,14 @@ export default function Home() {
                                 viewBox="0 0 24 24"
                                 fill="none"
                                 stroke="currentColor"
-                                strokeWidth="2"
+                                strokeWidth="2.2"
                                 strokeLinecap="round"
                                 strokeLinejoin="round"
                             >
-                                <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z" />
-                                <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
-                                <path d="M12 17h.01" />
+                                <path d="M10.5 18.5A7.5 7.5 0 1 1 15.6 5l.4.2" />
+                                <path d="M16 7.5a6.5 6.5 0 0 1 1 8.9L18 20l-3.5-1.2" />
+                                <path d="M10.3 9.3a2.6 2.6 0 0 1 5 1c0 1.9-2.3 2.6-2.8 3.7" />
+                                <path d="M12.5 16.8h.01" />
                             </svg>
                         </IconBubble>
                         <h3>Dúvidas Frequentes</h3>
