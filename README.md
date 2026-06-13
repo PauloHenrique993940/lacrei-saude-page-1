@@ -6,18 +6,25 @@ Aplicacao desenvolvida como parte do desafio tecnico para voluntariado na **Lacr
 
 ## Sumario
 
-1. [Visao Geral](#visao-geral)
-2. [Tecnologias Utilizadas](#tecnologias-utilizadas)
-3. [Estrutura de Pastas](#estrutura-de-pastas)
-4. [Instalacao e Execucao](#instalacao-e-execucao)
-5. [Funcionalidades e Jornadas](#funcionalidades-e-jornadas)
-6. [Identidade Visual](#identidade-visual)
-7. [Arquitetura e Decisoes Tecnicas](#arquitetura-e-decisoes-tecnicas)
-8. [Acessibilidade e Inclusao](#acessibilidade-e-inclusao)
-9. [Performance e Otimizacao](#performance-e-otimizacao)
-10. [Testes e Qualidade](#testes-e-qualidade)
-11. [Deploy e Manutencao](#deploy-e-manutencao)
-12. [Contribuicao](#contribuicao)
+- [Lacrei Saude - Desafio Front-end](#lacrei-saude---desafio-front-end)
+  - [Sumario](#sumario)
+  - [Visao Geral](#visao-geral)
+  - [Tecnologias Utilizadas](#tecnologias-utilizadas)
+  - [Estrutura de Pastas](#estrutura-de-pastas)
+  - [Instalacao e Execucao](#instalacao-e-execucao)
+    - [Pre-requisitos](#pre-requisitos)
+    - [Passos](#passos)
+  - [Funcionalidades e Jornadas](#funcionalidades-e-jornadas)
+    - [1. Jornada Institucional](#1-jornada-institucional)
+    - [2. Fluxo de Onboarding (PO)](#2-fluxo-de-onboarding-po)
+  - [Identidade Visual](#identidade-visual)
+  - [Arquitetura e Decisoes Tecnicas](#arquitetura-e-decisoes-tecnicas)
+  - [Acessibilidade e Inclusao](#acessibilidade-e-inclusao)
+  - [Performance e Otimizacao](#performance-e-otimizacao)
+    - [Evidencias de teste](#evidencias-de-teste)
+  - [Testes e Qualidade](#testes-e-qualidade)
+  - [Deploy e Manutencao](#deploy-e-manutencao)
+  - [Contribuicao](#contribuicao)
 
 ---
 
@@ -25,12 +32,12 @@ Aplicacao desenvolvida como parte do desafio tecnico para voluntariado na **Lacr
 
 A **Lacrei Saude** conecta pessoas da comunidade LGBTQIAPN+ com profissionais de saude comprometidos em oferecer um atendimento seguro, inclusivo e respeitoso. Este projeto representa a interface front-end focada na jornada de onboarding e informacional da plataforma.
 
-- **Deploy**: [https://lacrei-saude-page-1.vercel.app/](https://lacrei-saude-page-1.vercel.app/)
+- **Deploy**: [https://lacrei-saude-page-1.vercel.app/](https://lacrei-saude-taupe-nine.vercel.app/)
 - **Repositorio**: [https://github.com/PauloHenrique993940/lacrei-saude-page-1](https://github.com/PauloHenrique993940/lacrei-saude-page-1)
 - **Documentacao complementar**:
-   - `ACCESSIBILITY.md` com criterios, auditorias e evidencias de acessibilidade.
-   - `PERFORMANCE.md` com resultados, estrategia e artefatos de Lighthouse.
-   - `MARSHA_ADHERENCE.md` com o racional de aderencia ao guia visual Marsha.
+- `ACCESSIBILITY.md` com criterios, auditorias e evidencias de acessibilidade.
+- `PERFORMANCE.md` com resultados, estrategia e artefatos de Lighthouse.
+- `MARSHA_ADHERENCE.md` com o racional de aderencia ao guia visual Marsha.
 
 ---
 
