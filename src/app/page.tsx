@@ -9,8 +9,8 @@ import Link from 'next/link';
 import ImageHome from './assets/lacrei2.png';
 import FundoLacrei from './assets/fundolacrei.png';
 import PeopleHoding from './assets/peopleHoding.png';
-import PacienteImage from './assets/paciente.png';
-import ProfissionalImage from './assets/profissiona.png';
+import PacienteImage from './assets/person1.webp';
+import ProfissionalImage from './assets/personProfissional.webp';
 
 const Main = styled.main`
     display: flex;
@@ -430,13 +430,14 @@ const StepCircle = styled.div`
 
 const AudienceSection = styled.section`
     padding: 4rem 0;
+    width: 100%;
     max-width: 1216px;
     margin: 0 auto;
 
     > div {
         display: flex;
         flex-direction: column;
-        gap: 3rem;
+        gap: 10rem;
         padding: 0 2rem;
     }
 
