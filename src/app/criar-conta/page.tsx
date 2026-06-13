@@ -128,10 +128,10 @@ export default function CriarContaPage() {
             <Header />
             <Content>
                 <Card>
-                    <h1>Criar conta</h1>
+                    <h1>Criar conta na Lacrei Saúde</h1>
                     <p>
-                        Preencha seus dados para começar sua jornada na Lacrei
-                        Saúde.
+                        Junte-se à comunidade e acesse todas as funcionalidades
+                        da Lacrei Saúde.
                     </p>
 
                     <Form onSubmit={handleSubmit}>

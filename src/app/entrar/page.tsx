@@ -40,9 +40,19 @@ const FormCard = styled.div`
     padding: 1rem 0;
 
     h1 {
-        font-size: 3rem;
+        font-size: 2rem;
         color: ${(props) => props.theme.colors.secondary};
         margin-bottom: 0.9rem;
+        position: relative;
+    }
+    h1::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: -10px;
+        width: 200px; /* ajuste o tamanho da linha */
+        height: 2px;
+        background-color: #007756;
     }
 
     p {
@@ -109,8 +119,9 @@ const OutlineButton = styled(Link)`
 const ForgetLink = styled(Link)`
     margin-top: 0.6rem;
     color: ${(props) => props.theme.colors.primary};
-    font-weight: 600;
+    font-weight: 700;
     width: fit-content;
+    text-decoration: underline;
 `;
 
 const Message = styled.p`
