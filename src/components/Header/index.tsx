@@ -214,7 +214,7 @@ export const Header = memo(() => {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const pathname = usePathname();
     const isCadastro = pathname.includes('/cadastro');
-    const { isAuthenticated, user, logout, isReady } = useAuth();
+    const { isAuthenticated, user, logout } = useAuth();
 
     const NavLink = ({
         href,
@@ -407,3 +407,5 @@ export const Header = memo(() => {
         </HeaderContainer>
     );
 });
+
+Header.displayName = 'Header';
